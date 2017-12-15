@@ -14,13 +14,23 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CTNetworking (1.0.0):
+    - AFNetworking (~> 3.1.0)
+  - CYLTabBarController (1.14.1)
+  - SDAutoLayout (2.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - CTNetworking (~> 1.0.0)
+  - CYLTabBarController (~> 1.14.1)
+  - SDAutoLayout (~> 2.2.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CTNetworking: c632f0f19ec4385214c47985943b3002da20f862
+  CYLTabBarController: ec44b6e44166d9869fa649ce22bc728d107ecafc
+  SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
 
-PODFILE CHECKSUM: 0e53562bb63c19bedb291bb046837e0a83245578
+PODFILE CHECKSUM: 25d9d2d782595038247470769efe1630d49d8086
 
 COCOAPODS: 1.1.1

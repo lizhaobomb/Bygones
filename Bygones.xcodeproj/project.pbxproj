@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		80CD40381767EA4E736B9460 /* libPods-Bygones.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B070B71CB08020A8B2D0063C /* libPods-Bygones.a */; };
 		F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733B71FE2BD97007E263E /* AppDelegate.m */; };
-		F12733BB1FE2BD97007E263E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733BA1FE2BD97007E263E /* ViewController.m */; };
-		F12733BE1FE2BD97007E263E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733BC1FE2BD97007E263E /* Main.storyboard */; };
 		F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12733BF1FE2BD97007E263E /* Assets.xcassets */; };
 		F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */; };
 		F12733C61FE2BD97007E263E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733C51FE2BD97007E263E /* main.m */; };
+		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
+		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
+		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
+		F1560BE01FE3B2FC0030B958 /* OfficialAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */; };
+		F1560BE51FE3B3C00030B958 /* CYLTabBarControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BE41FE3B3C00030B958 /* CYLTabBarControllerConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +26,20 @@
 		F12733B31FE2BD97007E263E /* Bygones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bygones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12733B61FE2BD97007E263E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F12733B71FE2BD97007E263E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F12733B91FE2BD97007E263E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F12733BA1FE2BD97007E263E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F12733BD1FE2BD97007E263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F12733BF1FE2BD97007E263E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F12733C21FE2BD97007E263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F12733C41FE2BD97007E263E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F12733C51FE2BD97007E263E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		F1560BD91FE3B2D70030B958 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
+		F1560BDB1FE3B2E70030B958 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		F1560BDC1FE3B2E70030B958 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		F1560BDE1FE3B2FC0030B958 /* OfficialAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfficialAccountsViewController.h; sourceTree = "<group>"; };
+		F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfficialAccountsViewController.m; sourceTree = "<group>"; };
+		F1560BE31FE3B3C00030B958 /* CYLTabBarControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYLTabBarControllerConfig.h; sourceTree = "<group>"; };
+		F1560BE41FE3B3C00030B958 /* CYLTabBarControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYLTabBarControllerConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,17 +92,248 @@
 		F12733B51FE2BD97007E263E /* Bygones */ = {
 			isa = PBXGroup;
 			children = (
-				F12733B61FE2BD97007E263E /* AppDelegate.h */,
-				F12733B71FE2BD97007E263E /* AppDelegate.m */,
-				F12733B91FE2BD97007E263E /* ViewController.h */,
-				F12733BA1FE2BD97007E263E /* ViewController.m */,
-				F12733BC1FE2BD97007E263E /* Main.storyboard */,
+				F1560BE11FE3B35F0030B958 /* Vendor */,
+				F1560BBC1FE3B00E0030B958 /* AppDelegate */,
+				F1560BBB1FE3AFFC0030B958 /* Modules */,
 				F12733BF1FE2BD97007E263E /* Assets.xcassets */,
 				F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */,
 				F12733C41FE2BD97007E263E /* Info.plist */,
 				F12733C51FE2BD97007E263E /* main.m */,
 			);
 			path = Bygones;
+			sourceTree = "<group>";
+		};
+		F1560BBB1FE3AFFC0030B958 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BCF1FE3B2420030B958 /* Official Accounts(阳光号) */,
+				F1560BC31FE3B12F0030B958 /* Message(消息) */,
+				F1560BC91FE3B1700030B958 /* Mine(我的) */,
+				F1560BBD1FE3B0FA0030B958 /* Home(首页) */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		F1560BBC1FE3B00E0030B958 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				F12733B61FE2BD97007E263E /* AppDelegate.h */,
+				F12733B71FE2BD97007E263E /* AppDelegate.m */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		F1560BBD1FE3B0FA0030B958 /* Home(首页) */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BBE1FE3B0FA0030B958 /* Controller */,
+				F1560BBF1FE3B0FA0030B958 /* Model */,
+				F1560BC01FE3B0FA0030B958 /* View */,
+				F1560BC11FE3B0FA0030B958 /* Service */,
+				F1560BC21FE3B0FA0030B958 /* Resource */,
+			);
+			path = "Home(首页)";
+			sourceTree = "<group>";
+		};
+		F1560BBE1FE3B0FA0030B958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BD51FE3B2BA0030B958 /* HomeViewController.h */,
+				F1560BD61FE3B2BA0030B958 /* HomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1560BBF1FE3B0FA0030B958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1560BC01FE3B0FA0030B958 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1560BC11FE3B0FA0030B958 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F1560BC21FE3B0FA0030B958 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F1560BC31FE3B12F0030B958 /* Message(消息) */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BC41FE3B12F0030B958 /* Controller */,
+				F1560BC51FE3B12F0030B958 /* Model */,
+				F1560BC61FE3B12F0030B958 /* View */,
+				F1560BC71FE3B12F0030B958 /* Service */,
+				F1560BC81FE3B12F0030B958 /* Resource */,
+			);
+			path = "Message(消息)";
+			sourceTree = "<group>";
+		};
+		F1560BC41FE3B12F0030B958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BDB1FE3B2E70030B958 /* MessageViewController.h */,
+				F1560BDC1FE3B2E70030B958 /* MessageViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1560BC51FE3B12F0030B958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1560BC61FE3B12F0030B958 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1560BC71FE3B12F0030B958 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F1560BC81FE3B12F0030B958 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F1560BC91FE3B1700030B958 /* Mine(我的) */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BCA1FE3B1700030B958 /* Controller */,
+				F1560BCB1FE3B1700030B958 /* Model */,
+				F1560BCC1FE3B1700030B958 /* View */,
+				F1560BCD1FE3B1700030B958 /* Service */,
+				F1560BCE1FE3B1700030B958 /* Resource */,
+			);
+			path = "Mine(我的)";
+			sourceTree = "<group>";
+		};
+		F1560BCA1FE3B1700030B958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BD81FE3B2D70030B958 /* MineViewController.h */,
+				F1560BD91FE3B2D70030B958 /* MineViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1560BCB1FE3B1700030B958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1560BCC1FE3B1700030B958 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1560BCD1FE3B1700030B958 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F1560BCE1FE3B1700030B958 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F1560BCF1FE3B2420030B958 /* Official Accounts(阳光号) */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BD01FE3B2420030B958 /* Controller */,
+				F1560BD11FE3B2420030B958 /* Model */,
+				F1560BD21FE3B2420030B958 /* View */,
+				F1560BD31FE3B2420030B958 /* Service */,
+				F1560BD41FE3B2420030B958 /* Resource */,
+			);
+			path = "Official Accounts(阳光号)";
+			sourceTree = "<group>";
+		};
+		F1560BD01FE3B2420030B958 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BDE1FE3B2FC0030B958 /* OfficialAccountsViewController.h */,
+				F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F1560BD11FE3B2420030B958 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F1560BD21FE3B2420030B958 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F1560BD31FE3B2420030B958 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F1560BD41FE3B2420030B958 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F1560BE11FE3B35F0030B958 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BE21FE3B3770030B958 /* CYLTabBarController */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		F1560BE21FE3B3770030B958 /* CYLTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				F1560BE31FE3B3C00030B958 /* CYLTabBarControllerConfig.h */,
+				F1560BE41FE3B3C00030B958 /* CYLTabBarControllerConfig.m */,
+			);
+			path = CYLTabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,7 +399,6 @@
 			files = (
 				F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */,
 				F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */,
-				F12733BE1FE2BD97007E263E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,23 +460,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F12733BB1FE2BD97007E263E /* ViewController.m in Sources */,
+				F1560BE51FE3B3C00030B958 /* CYLTabBarControllerConfig.m in Sources */,
 				F12733C61FE2BD97007E263E /* main.m in Sources */,
+				F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */,
+				F1560BE01FE3B2FC0030B958 /* OfficialAccountsViewController.m in Sources */,
 				F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */,
+				F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */,
+				F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F12733BC1FE2BD97007E263E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F12733BD1FE2BD97007E263E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

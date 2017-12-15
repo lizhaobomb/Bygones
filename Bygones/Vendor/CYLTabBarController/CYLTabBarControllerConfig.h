@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CYLTabBarController/CYLTabBarController.h>
 @interface CYLTabBarControllerConfig : NSObject
+
+@property (nonatomic, readonly, strong) CYLTabBarController *tabBarController;
 
 @end

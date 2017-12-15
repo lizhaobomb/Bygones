@@ -73,6 +73,14 @@ EOM
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "CTNetworking/CTNetworking/CTNetworking/Components/iPhoneTypeDefine.plist"
+  install_resource "CTNetworking/CTNetworking/CTNetworking/Configurations/CTNetworkingConfiguration.plist"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "CTNetworking/CTNetworking/CTNetworking/Components/iPhoneTypeDefine.plist"
+  install_resource "CTNetworking/CTNetworking/CTNetworking/Configurations/CTNetworkingConfiguration.plist"
+fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

@@ -7,4 +7,7 @@ target 'Bygones' do
 
   # Pods for Bygones
 pod 'AFNetworking', '~> 3.1.0'
+pod 'CTNetworking', '~> 1.0.0'
+pod 'SDAutoLayout', '~> 2.2.0'
+pod 'CYLTabBarController', '~> 1.14.1'
 end
