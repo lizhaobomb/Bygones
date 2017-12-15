@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80CD40381767EA4E736B9460 /* libPods-Bygones.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B070B71CB08020A8B2D0063C /* libPods-Bygones.a */; };
 		F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733B71FE2BD97007E263E /* AppDelegate.m */; };
 		F12733BB1FE2BD97007E263E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733BA1FE2BD97007E263E /* ViewController.m */; };
 		F12733BE1FE2BD97007E263E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733BC1FE2BD97007E263E /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29546701DCA9FADFE3B709B7 /* Pods-Bygones.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.release.xcconfig"; sourceTree = "<group>"; };
+		B070B71CB08020A8B2D0063C /* libPods-Bygones.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bygones.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3447230DDC12C36E9E0968 /* Pods-Bygones.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.debug.xcconfig"; sourceTree = "<group>"; };
 		F12733B31FE2BD97007E263E /* Bygones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bygones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12733B61FE2BD97007E263E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F12733B71FE2BD97007E263E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -33,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CD40381767EA4E736B9460 /* libPods-Bygones.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD23818B8E33C093B0B36F3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B070B71CB08020A8B2D0063C /* libPods-Bygones.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E77A4556795F6776D5EA304C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC3447230DDC12C36E9E0968 /* Pods-Bygones.debug.xcconfig */,
+				29546701DCA9FADFE3B709B7 /* Pods-Bygones.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F12733AA1FE2BD97007E263E = {
 			isa = PBXGroup;
 			children = (
 				F12733B51FE2BD97007E263E /* Bygones */,
 				F12733B41FE2BD97007E263E /* Products */,
+				E77A4556795F6776D5EA304C /* Pods */,
+				BD23818B8E33C093B0B36F3C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,9 +102,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F12733C91FE2BD97007E263E /* Build configuration list for PBXNativeTarget "Bygones" */;
 			buildPhases = (
+				C484CC078F302A0B404BC60E /* [CP] Check Pods Manifest.lock */,
 				F12733AF1FE2BD97007E263E /* Sources */,
 				F12733B01FE2BD97007E263E /* Frameworks */,
 				F12733B11FE2BD97007E263E /* Resources */,
+				064210EB33B052AC27586B76 /* [CP] Embed Pods Frameworks */,
+				E8630BE60E7376990F51241C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +163,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		064210EB33B052AC27586B76 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bygones/Pods-Bygones-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C484CC078F302A0B404BC60E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bygones-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E8630BE60E7376990F51241C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bygones/Pods-Bygones-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F12733AF1FE2BD97007E263E /* Sources */ = {
@@ -276,6 +354,7 @@
 		};
 		F12733CA1FE2BD97007E263E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC3447230DDC12C36E9E0968 /* Pods-Bygones.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -290,6 +369,7 @@
 		};
 		F12733CB1FE2BD97007E263E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29546701DCA9FADFE3B709B7 /* Pods-Bygones.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
