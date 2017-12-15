@@ -7,7 +7,7 @@
 //
 
 #import "MineViewController.h"
-
+#import "DemoVC9.h"
 @interface MineViewController ()
 
 @end
@@ -17,6 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor cyanColor];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:button];
+    [button setTitle:@"朋友圈" forState:UIControlStateNormal];
+    button.frame = CGRectMake(10, 10, 300, 50);
+    button.center = self.view.center;
+    [button addTarget:self action:@selector(pushVC) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)pushVC {
+    DemoVC9 *demo9 = [[DemoVC9 alloc] init];
+    [self.navigationController pushViewController:demo9 animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

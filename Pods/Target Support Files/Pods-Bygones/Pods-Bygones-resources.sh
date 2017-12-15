@@ -76,10 +76,12 @@ EOM
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "CTNetworking/CTNetworking/CTNetworking/Components/iPhoneTypeDefine.plist"
   install_resource "CTNetworking/CTNetworking/CTNetworking/Configurations/CTNetworkingConfiguration.plist"
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "CTNetworking/CTNetworking/CTNetworking/Components/iPhoneTypeDefine.plist"
   install_resource "CTNetworking/CTNetworking/CTNetworking/Configurations/CTNetworkingConfiguration.plist"
+  install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

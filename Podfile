@@ -10,4 +10,7 @@ pod 'AFNetworking', '~> 3.1.0'
 pod 'CTNetworking', '~> 1.0.0'
 pod 'SDAutoLayout', '~> 2.2.0'
 pod 'CYLTabBarController', '~> 1.14.1'
+pod 'MJExtension', '~> 3.0.13'
+pod 'MJRefresh', '~> 3.1.14'
+pod 'SDCycleScrollView', '~> 1.73'
 end

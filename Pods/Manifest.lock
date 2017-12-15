@@ -17,20 +17,34 @@ PODS:
   - CTNetworking (1.0.0):
     - AFNetworking (~> 3.1.0)
   - CYLTabBarController (1.14.1)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.14)
   - SDAutoLayout (2.2.0)
+  - SDCycleScrollView (1.73):
+    - SDWebImage (~> 4.0.0)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - CTNetworking (~> 1.0.0)
   - CYLTabBarController (~> 1.14.1)
+  - MJExtension (~> 3.0.13)
+  - MJRefresh (~> 3.1.14)
   - SDAutoLayout (~> 2.2.0)
+  - SDCycleScrollView (~> 1.73)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CTNetworking: c632f0f19ec4385214c47985943b3002da20f862
   CYLTabBarController: ec44b6e44166d9869fa649ce22bc728d107ecafc
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
+  SDCycleScrollView: d0fd5fe40a80918371fd8939214eb3be81033d83
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
 
-PODFILE CHECKSUM: 25d9d2d782595038247470769efe1630d49d8086
+PODFILE CHECKSUM: 52388c674748bef6352b0bb6a41c3b1dd98c93c8
 
 COCOAPODS: 1.1.1
