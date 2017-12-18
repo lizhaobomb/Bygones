@@ -1,5 +1,5 @@
 //
-//  OfficialAccountsViewController.h
+//  Discovery.h
 //  Bygones
 //
 //  Created by lizhao on 2017/12/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OfficialAccountsViewController : UIViewController
+@interface Discovery : UIViewController
 
 @end

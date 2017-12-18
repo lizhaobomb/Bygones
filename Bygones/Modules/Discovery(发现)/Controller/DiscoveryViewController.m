@@ -1,18 +1,18 @@
 //
-//  OfficialAccountsViewController.m
+//  Discovery.m
 //  Bygones
 //
 //  Created by lizhao on 2017/12/15.
 //  Copyright © 2017年 lizhao. All rights reserved.
 //
 
-#import "OfficialAccountsViewController.h"
+#import "Discovery.h"
 
-@interface OfficialAccountsViewController ()
+@interface Discovery ()
 
 @end
 
-@implementation OfficialAccountsViewController
+@implementation Discovery
 
 - (void)viewDidLoad {
     [super viewDidLoad];
