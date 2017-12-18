@@ -15,7 +15,7 @@
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
-		F1560BE01FE3B2FC0030B958 /* OfficialAccountsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */; };
+		F1560BE01FE3B2FC0030B958 /* DiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDF1FE3B2FC0030B958 /* DiscoveryViewController.m */; };
 		F1560BE51FE3B3C00030B958 /* CYLTabBarControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BE41FE3B3C00030B958 /* CYLTabBarControllerConfig.m */; };
 		F1560BF01FE3BF0C0030B958 /* ThreeFirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BE61FE3BF0B0030B958 /* ThreeFirstCell.m */; };
 		F1560BF11FE3BF0C0030B958 /* ThreeBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BE71FE3BF0B0030B958 /* ThreeBaseCell.m */; };
@@ -129,8 +129,8 @@
 		F1560BD91FE3B2D70030B958 /* MineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		F1560BDB1FE3B2E70030B958 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
 		F1560BDC1FE3B2E70030B958 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
-		F1560BDE1FE3B2FC0030B958 /* OfficialAccountsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OfficialAccountsViewController.h; sourceTree = "<group>"; };
-		F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OfficialAccountsViewController.m; sourceTree = "<group>"; };
+		F1560BDE1FE3B2FC0030B958 /* DiscoveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiscoveryViewController.h; sourceTree = "<group>"; };
+		F1560BDF1FE3B2FC0030B958 /* DiscoveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiscoveryViewController.m; sourceTree = "<group>"; };
 		F1560BE31FE3B3C00030B958 /* CYLTabBarControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYLTabBarControllerConfig.h; sourceTree = "<group>"; };
 		F1560BE41FE3B3C00030B958 /* CYLTabBarControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYLTabBarControllerConfig.m; sourceTree = "<group>"; };
 		F1560BE61FE3BF0B0030B958 /* ThreeFirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeFirstCell.m; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 		F1560BBB1FE3AFFC0030B958 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				F1560BCF1FE3B2420030B958 /* Official Accounts(阳光号) */,
+				F1560BCF1FE3B2420030B958 /* Discovery(发现) */,
 				F1560BC31FE3B12F0030B958 /* Message(消息) */,
 				F1560BC91FE3B1700030B958 /* Mine(我的) */,
 				F1560BBD1FE3B0FA0030B958 /* Home(首页) */,
@@ -572,7 +572,7 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		F1560BCF1FE3B2420030B958 /* Official Accounts(阳光号) */ = {
+		F1560BCF1FE3B2420030B958 /* Discovery(发现) */ = {
 			isa = PBXGroup;
 			children = (
 				F1560BD01FE3B2420030B958 /* Controller */,
@@ -581,14 +581,14 @@
 				F1560BD31FE3B2420030B958 /* Service */,
 				F1560BD41FE3B2420030B958 /* Resource */,
 			);
-			path = "Official Accounts(阳光号)";
+			path = "Discovery(发现)";
 			sourceTree = "<group>";
 		};
 		F1560BD01FE3B2420030B958 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F1560BDE1FE3B2FC0030B958 /* OfficialAccountsViewController.h */,
-				F1560BDF1FE3B2FC0030B958 /* OfficialAccountsViewController.m */,
+				F1560BDE1FE3B2FC0030B958 /* DiscoveryViewController.h */,
+				F1560BDF1FE3B2FC0030B958 /* DiscoveryViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1054,7 +1054,7 @@
 				F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */,
 				F1560BF01FE3BF0C0030B958 /* ThreeFirstCell.m in Sources */,
 				F16C4C7C1FE3C9E00086117A /* SDBaseTableViewController.m in Sources */,
-				F1560BE01FE3B2FC0030B958 /* OfficialAccountsViewController.m in Sources */,
+				F1560BE01FE3B2FC0030B958 /* DiscoveryViewController.m in Sources */,
 				F16C4C9D1FE3CA3F0086117A /* SDTimeLineCellOperationMenu.m in Sources */,
 				F16C4C841FE3CA220086117A /* SDTimeLineCellModel.m in Sources */,
 				F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */,

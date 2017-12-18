@@ -1,18 +1,18 @@
 //
-//  Discovery.m
+//  DiscoveryViewController.m
 //  Bygones
 //
 //  Created by lizhao on 2017/12/15.
 //  Copyright © 2017年 lizhao. All rights reserved.
 //
 
-#import "Discovery.h"
+#import "DiscoveryViewController.h"
 
-@interface Discovery ()
+@interface DiscoveryViewController ()
 
 @end
 
-@implementation Discovery
+@implementation DiscoveryViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

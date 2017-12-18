@@ -1,5 +1,5 @@
 //
-//  Discovery.h
+//  DiscoveryViewController.h
 //  Bygones
 //
 //  Created by lizhao on 2017/12/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Discovery : UIViewController
+@interface DiscoveryViewController : UIViewController
 
 @end

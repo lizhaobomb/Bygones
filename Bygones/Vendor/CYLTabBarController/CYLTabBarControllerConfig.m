@@ -8,7 +8,7 @@
 
 #import "CYLTabBarControllerConfig.h"
 #import "HomeViewController.h"
-#import "OfficialAccountsViewController.h"
+#import "DiscoveryViewController.h"
 #import "MessageViewController.h"
 #import "MineViewController.h"
 
@@ -64,7 +64,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
                                                  CYLTabBarItemSelectedImage : @"home_highlight", /* NSString and UIImage are supported*/
                                                  };
     NSDictionary *secondTabBarItemsAttributes = @{
-                                                  CYLTabBarItemTitle : @"阳光号",
+                                                  CYLTabBarItemTitle : @"发现",
                                                   CYLTabBarItemImage : @"mycity_normal",
                                                   CYLTabBarItemSelectedImage : @"mycity_highlight",
                                                   };
@@ -92,7 +92,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
     CYLBaseNavigationController *homeNav = [[CYLBaseNavigationController alloc] initWithRootViewController:homeVC];
     MessageViewController *messageVC = [[MessageViewController alloc] init];
     CYLBaseNavigationController *messageNav = [[CYLBaseNavigationController alloc] initWithRootViewController:messageVC];
-    OfficialAccountsViewController *officialVC = [[OfficialAccountsViewController alloc] init];
+    DiscoveryViewController *officialVC = [[DiscoveryViewController alloc] init];
     CYLBaseNavigationController *officialNav = [[CYLBaseNavigationController alloc] initWithRootViewController:officialVC];
     MineViewController *mineVC = [[MineViewController alloc] init];
     CYLBaseNavigationController *mineNav = [[CYLBaseNavigationController alloc] initWithRootViewController:mineVC];
