@@ -110,6 +110,10 @@
 		F16C4D4E1FE3D4E80086117A /* AlbumComment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D301FE3D4840086117A /* AlbumComment@3x.png */; };
 		F16C4D501FE3D54D0086117A /* pbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D4F1FE3D54D0086117A /* pbg.jpg */; };
 		F16C4D521FE3D58E0086117A /* picon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D511FE3D58E0086117A /* picon.jpg */; };
+		F182B57D2049336A0016DEB2 /* Target_DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */; };
+		F182B581204943230016DEB2 /* Target_CTAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B580204943230016DEB2 /* Target_CTAppContext.m */; };
+		F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */; };
+		F1F460E32046559300431FDE /* DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460E22046559300431FDE /* DiyCodeService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -272,6 +276,14 @@
 		F16C4D3F1FE3D4C10086117A /* LikeCmtBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeCmtBg@2x.png"; sourceTree = "<group>"; };
 		F16C4D4F1FE3D54D0086117A /* pbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pbg.jpg; sourceTree = "<group>"; };
 		F16C4D511FE3D58E0086117A /* picon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picon.jpg; sourceTree = "<group>"; };
+		F182B57B2049336A0016DEB2 /* Target_DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_DiyCodeService.h; sourceTree = "<group>"; };
+		F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_DiyCodeService.m; sourceTree = "<group>"; };
+		F182B57F204943230016DEB2 /* Target_CTAppContext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_CTAppContext.h; sourceTree = "<group>"; };
+		F182B580204943230016DEB2 /* Target_CTAppContext.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_CTAppContext.m; sourceTree = "<group>"; };
+		F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsApiManager.h; sourceTree = "<group>"; };
+		F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsApiManager.m; sourceTree = "<group>"; };
+		F1F460E12046559300431FDE /* DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeService.h; sourceTree = "<group>"; };
+		F1F460E22046559300431FDE /* DiyCodeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +622,13 @@
 		F1560BD31FE3B2420030B958 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				F182B57E204942820016DEB2 /* AppContext */,
+				F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */,
+				F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */,
+				F1F460E12046559300431FDE /* DiyCodeService.h */,
+				F1F460E22046559300431FDE /* DiyCodeService.m */,
+				F182B57B2049336A0016DEB2 /* Target_DiyCodeService.h */,
+				F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -843,6 +862,16 @@
 			path = cell_icons;
 			sourceTree = "<group>";
 		};
+		F182B57E204942820016DEB2 /* AppContext */ = {
+			isa = PBXGroup;
+			children = (
+				F182B57F204943230016DEB2 /* Target_CTAppContext.h */,
+				F182B580204943230016DEB2 /* Target_CTAppContext.m */,
+			);
+			name = AppContext;
+			path = ../../../../../AppContext;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -999,7 +1028,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E8630BE60E7376990F51241C /* [CP] Copy Pods Resources */ = {
@@ -1008,9 +1037,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bygones/Pods-Bygones-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1026,6 +1058,7 @@
 			files = (
 				F16C4CD61FE3CD510086117A /* TTTAttributedLabel.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
+				F182B581204943230016DEB2 /* Target_CTAppContext.m in Sources */,
 				F16C4CD81FE3CD510086117A /* NSAttributedString+MLLabel.m in Sources */,
 				F16C4CD91FE3CD510086117A /* NSAttributedString+MLExpression.m in Sources */,
 				F16C4CDA1FE3CD510086117A /* MLTextAttachment.m in Sources */,
@@ -1033,6 +1066,7 @@
 				F16C4CDC1FE3CD510086117A /* MLExpressionManager.m in Sources */,
 				F16C4CDD1FE3CD510086117A /* MLLabel.m in Sources */,
 				F16C4CDE1FE3CD510086117A /* MLLabelLayoutManager.m in Sources */,
+				F1F460E32046559300431FDE /* DiyCodeService.m in Sources */,
 				F16C4CDF1FE3CD510086117A /* XYString.m in Sources */,
 				F16C4CD21FE3CC550086117A /* SDPhotoBrowser.m in Sources */,
 				F16C4CD31FE3CC550086117A /* SDWaitingView.m in Sources */,
@@ -1055,6 +1089,7 @@
 				F1560BF01FE3BF0C0030B958 /* ThreeFirstCell.m in Sources */,
 				F16C4C7C1FE3C9E00086117A /* SDBaseTableViewController.m in Sources */,
 				F1560BE01FE3B2FC0030B958 /* DiscoveryViewController.m in Sources */,
+				F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */,
 				F16C4C9D1FE3CA3F0086117A /* SDTimeLineCellOperationMenu.m in Sources */,
 				F16C4C841FE3CA220086117A /* SDTimeLineCellModel.m in Sources */,
 				F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */,
@@ -1064,6 +1099,7 @@
 				F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */,
 				F16C4C9C1FE3CA3F0086117A /* SDTimeLineCellCommentView.m in Sources */,
 				F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */,
+				F182B57D2049336A0016DEB2 /* Target_DiyCodeService.m in Sources */,
 				F1560BFF1FE3BF230030B958 /* Editor.m in Sources */,
 				F16C4C7D1FE3C9E00086117A /* SDBaseNavigationController.m in Sources */,
 				F16C4C9B1FE3CA3F0086117A /* SDTimeLineCell.m in Sources */,

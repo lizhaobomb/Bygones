@@ -1,140 +1,24 @@
-# CTNetworking
 
-[![Join the chat at https://gitter.im/casatwy/RTNetworking](https://badges.gitter.im/casatwy/RTNetworking.svg)](https://gitter.im/casatwy/RTNetworking?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+pod "CTNetworking"
 
-`CTNetworking` is an iOS discrete HTTP API calling framework based on AFNetworking.[Click for more detail(in Chinese)](http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html)
+related projects
+----------------
 
-## Requirements
+[https://github.com/CTAPIs/CTAPI_Marvel](https://github.com/CTAPIs/CTAPI_Marvel) Marvel iOS API managers based on CTNetworking, you can also see it as a demo for how to use CTNetworking
 
-`CTNetworking` works on iOS 8.0+ and requires ARC to build. It depends on the following Apple frameworks, which should already be included with most Xcode templates:
+todo
+----
 
-* Foundation.framework
-* UIKit.framework
-* CoreGraphics.framework
-* QuartzCore.framework
-* AFNetworking
-
-You will need the latest developer tools in order to build `CTNetworking`. Old Xcode versions might work, but compatibility will not be explicitly maintained.
-
-## Adding CTNetworking to your project
-
-## Demo
-
-Just download or clone the whole project and DO NOT FORGET `$ pod update --verbose`
-
-## Usage
-
-### Call API
-
-CTNetworking API URL is constituted by 4 part:
-
-`CTService`+`CTService Version`+`API method Name`+`API Parameters`
-
-#### Custom a CTService
-
-Inherit `CTService` and follow `CTServiceProtocol`
-
-```objective-c
-@interface GDMapService : CTService <CTServiceProtocol>
-```
-
-Implement all methods of `CTServiceProtocol`
-
-```objective-c
-...
-- (NSString *)onlineApiBaseUrl
-{
-    return @"http://restapi.amap.com";
-}
-- (NSString *)onlineApiVersion
-{
-    return @"v3";
-}
-...
-```
-
-#### Custom an APIManager
-
-Inherit `CTAPIBaseManager` and follow `CTAPIManager` Protocal
-
-```objective-c
-@interface TestAPIManager : CTAPIBaseManager <CTAPIManager>
-```
-
-Implement all methods of `CTAPIManager`
-
-```objective-c
-...
-- (NSString *)methodName
-{
-    return @"geocode/regeo";
-}
-
-- (NSString *)serviceType
-{
-    return kCTServiceGDMapV3;
-}
-
-- (CTAPIManagerRequestType)requestType
-{
-    return CTAPIManagerRequestTypeGet;
-}
-...
-```
-
-#### Call API
-
-Instantiation of API Manager in class
-
-```objective-c
-@property (nonatomic, strong) TestAPIManager *testAPIManager;
-
-- (TestAPIManager *)testAPIManager
-{
-    if (_testAPIManager == nil) {
-        _testAPIManager = [[TestAPIManager alloc] init];
-        _testAPIManager.delegate = self;
-        _testAPIManager.paramSource = self;
-    }
-    return _testAPIManager;
-}
-```
-
-Implement methods of `CTAPIManagerParamSource` and `CTAPIManagerCallBackDelegate`
-
-```objective-c
-#pragma mark - CTAPIManagerParamSource
-- (NSDictionary *)paramsForApi:(CTAPIBaseManager *)manager
-{
-    return parmas;
-}
-
-#pragma mark - CTAPIManagerCallBackDelegate
-- (void)managerCallAPIDidSuccess:(CTAPIBaseManager *)manager
-{
-    //do something
-}
-- (void)managerCallAPIDidFailed:(CTAPIBaseManager *)manager
-{
-    //do something
-}
-```
-
-And easy to use
-
-```objective-c
-[self.testAPIManager loadData];
-```
-
-### AppContext settings
-
-You SHOULD custom `CTAppContext` to set App networking layer settings. Also, you can add more settings to use.
-
-See more in demo and [Click for more detail(in Chinese)](http://casatwy.com/iosying-yong-jia-gou-tan-wang-luo-ceng-she-ji-fang-an.html)
-
-
-Enjoy.
-
-## License
-
-This code is distributed under the terms and conditions of the [MIT license](LICENSE).
+- pagable api manager demo
+- group call api manager demo
+- dependented call api manager demo
+- memory cache demo
+- disk cache demo
+- auto login demo
+- reformer demo
+- validator demo
+- param source demo
+- body param and url param mixed demo
+- websocket call api demo
+- h5 call api demo
+- swift call api demo

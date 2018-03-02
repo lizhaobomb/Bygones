@@ -7,12 +7,9 @@
 //
 
 #import "CTServiceFactory.h"
-#import "CTService.h"
+#import <CTMediator/CTMediator.h>
 
 /*************************************************************************/
-
-// service name list
-
 
 @interface CTServiceFactory ()
 
@@ -43,10 +40,8 @@
 }
 
 #pragma mark - public methods
-- (CTService<CTServiceProtocol> *)serviceWithIdentifier:(NSString *)identifier
+- (id <CTServiceProtocol>)serviceWithIdentifier:(NSString *)identifier
 {
-    NSAssert(self.dataSource, @"必须提供dataSource绑定并实现servicesKindsOfServiceFactory方法，否则无法正常使用Service模块");
-    
     if (self.serviceStorage[identifier] == nil) {
         self.serviceStorage[identifier] = [self newServiceWithIdentifier:identifier];
     }
@@ -54,21 +49,9 @@
 }
 
 #pragma mark - private methods
-- (CTService<CTServiceProtocol> *)newServiceWithIdentifier:(NSString *)identifier
+- (id <CTServiceProtocol>)newServiceWithIdentifier:(NSString *)identifier
 {
-    NSAssert([self.dataSource respondsToSelector:@selector(servicesKindsOfServiceFactory)], @"请实现CTServiceFactoryDataSource的servicesKindsOfServiceFactory方法");
-    
-    if ([[self.dataSource servicesKindsOfServiceFactory]valueForKey:identifier]) {
-        NSString *classStr = [[self.dataSource servicesKindsOfServiceFactory]valueForKey:identifier];
-        id service = [[NSClassFromString(classStr) alloc]init];
-        NSAssert(service, [NSString stringWithFormat:@"无法创建service，请检查servicesKindsOfServiceFactory提供的数据是否正确"],service);
-        NSAssert([service conformsToProtocol:@protocol(CTServiceProtocol)], @"你提供的Service没有遵循CTServiceProtocol");
-        return service;
-    }else {
-        NSAssert(NO, @"servicesKindsOfServiceFactory中无法找不到相匹配identifier");
-    }
-    
-    return nil;
+    return [[CTMediator sharedInstance] performTarget:identifier action:identifier params:nil shouldCacheTarget:NO];
 }
 
 @end

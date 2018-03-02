@@ -8,7 +8,8 @@
 
 #import "CTMemoryCacheDataCenter.h"
 #import "CTMemoryCachedRecord.h"
-#import "CTNetworkingConfigurationManager.h"
+#import "CTMediator+CTAppContext.h"
+
 @interface CTMemoryCacheDataCenter ()
 
 @property (nonatomic, strong) NSCache *cache;
@@ -53,7 +54,7 @@
 {
     if (_cache == nil) {
         _cache = [[NSCache alloc] init];
-        _cache.countLimit = [CTNetworkingConfigurationManager sharedInstance].cacheCountLimit;
+        _cache.countLimit = [[CTMediator sharedInstance] CTNetworking_cacheResponseCountLimit];
     }
     return _cache;
 }

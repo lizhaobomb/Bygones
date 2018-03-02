@@ -9,19 +9,22 @@
 #import <AFNetworking/AFNetworking.h>
 #import "CTApiProxy.h"
 #import "CTServiceFactory.h"
-#import "CTRequestGenerator.h"
 #import "CTLogger.h"
 #import "NSURLRequest+CTNetworkingMethods.h"
+#import "NSString+AXNetworkingMethods.h"
+#import "NSObject+AXNetworkingMethods.h"
 
 static NSString * const kAXApiProxyDispatchItemKeyCallbackSuccess = @"kAXApiProxyDispatchItemCallbackSuccess";
 static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDispatchItemCallbackFail";
+
+NSString * const kCTApiProxyValidateResultKeyResponseJSONObject = @"kCTApiProxyValidateResultKeyResponseJSONObject";
+NSString * const kCTApiProxyValidateResultKeyResponseJSONString = @"kCTApiProxyValidateResultKeyResponseJSONString";
+NSString * const kCTApiProxyValidateResultKeyResponseData = @"kCTApiProxyValidateResultKeyResponseData";
 
 @interface CTApiProxy ()
 
 @property (nonatomic, strong) NSMutableDictionary *dispatchTable;
 @property (nonatomic, strong) NSNumber *recordedRequestId;
-
-//AFNetworking stuff
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
 
 @end
@@ -59,34 +62,6 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
 }
 
 #pragma mark - public methods
-- (NSInteger)callGETWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[CTRequestGenerator sharedInstance] generateGETRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callPOSTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[CTRequestGenerator sharedInstance] generatePOSTRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callPUTWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[CTRequestGenerator sharedInstance] generatePutRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
-- (NSInteger)callDELETEWithParams:(NSDictionary *)params serviceIdentifier:(NSString *)servieIdentifier methodName:(NSString *)methodName success:(AXCallback)success fail:(AXCallback)fail
-{
-    NSURLRequest *request = [[CTRequestGenerator sharedInstance] generateDeleteRequestWithServiceIdentifier:servieIdentifier requestParams:params methodName:methodName];
-    NSNumber *requestId = [self callApiWithRequest:request success:success fail:fail];
-    return [requestId integerValue];
-}
-
 - (void)cancelRequestWithRequestID:(NSNumber *)requestID
 {
     NSURLSessionDataTask *requestOperation = self.dispatchTable[requestID];
@@ -102,43 +77,38 @@ static NSString * const kAXApiProxyDispatchItemKeyCallbackFail = @"kAXApiProxyDi
 }
 
 /** 这个函数存在的意义在于，如果将来要把AFNetworking换掉，只要修改这个函数的实现即可。 */
-- (NSNumber *)callApiWithRequest:(NSURLRequest *)request success:(AXCallback)success fail:(AXCallback)fail
+- (NSNumber *)callApiWithRequest:(NSURLRequest *)request success:(CTCallback)success fail:(CTCallback)fail
 {
-    
-    NSLog(@"\n==================================\n\nRequest Start: \n\n %@\n\n==================================", request.URL);
-    
     // 跑到这里的block的时候，就已经是主线程了。
     __block NSURLSessionDataTask *dataTask = nil;
-    dataTask = [self.sessionManager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    dataTask = [self.sessionManager dataTaskWithRequest:request
+                                         uploadProgress:nil
+                                       downloadProgress:nil
+                                      completionHandler:^(NSURLResponse * _Nonnull response, NSData * _Nullable responseData, NSError * _Nullable error) {
         NSNumber *requestID = @([dataTask taskIdentifier]);
         [self.dispatchTable removeObjectForKey:requestID];
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSData *responseData = responseObject;
-        NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
         
+        NSDictionary *result = [request.service resultWithResponseData:responseData response:response request:request error:&error];
+        // 输出返回数据
+        CTURLResponse *CTResponse = [[CTURLResponse alloc] initWithResponseString:result[kCTApiProxyValidateResultKeyResponseJSONString]
+                                                                        requestId:requestID
+                                                                          request:request
+                                                                  responseContent:result[kCTApiProxyValidateResultKeyResponseJSONObject]
+                                                                            error:error];
+
+        CTResponse.logString = [CTLogger logDebugInfoWithResponse:(NSHTTPURLResponse *)response
+                                                  rawResponseData:responseData
+                                                   responseString:result[kCTApiProxyValidateResultKeyResponseJSONString]
+                                                          request:request
+                                                            error:error];
+
         if (error) {
-//            [CTLogger logDebugInfoWithResponse:httpResponse
-//                                responseString:responseString
-//                                       request:request
-//                                         error:error];
-            [CTLogger logDebugInfoWithResponse:httpResponse rawResponseData:responseData responseString:responseString request:request error:error];
-            CTURLResponse *CTResponse = [[CTURLResponse alloc] initWithResponseString:responseString requestId:requestID request:request responseData:responseData error:error];
             fail?fail(CTResponse):nil;
         } else {
-            // 检查http response是否成立。
-//            [CTLogger logDebugInfoWithResponse:httpResponse
-//                                responseString:responseString
-//                                       request:request
-//                                         error:NULL];
-            [CTLogger logDebugInfoWithResponse:httpResponse rawResponseData:responseData responseString:responseString request:request error:NULL];
-//            CTURLResponse *CTResponse = [[CTURLResponse alloc] initWithResponseString:responseString requestId:requestID request:request responseData:responseData status:CTURLResponseStatusSuccess];
-//            success?success(CTResponse):nil;
-            
-            CTURLResponse *CTResponse = [[CTURLResponse alloc] initWithResponseString:responseString requestId:requestID request:request responseData:responseData error:error];
             success?success(CTResponse):nil;
         }
     }];
-    
+
     NSNumber *requestId = @([dataTask taskIdentifier]);
     
     self.dispatchTable[requestId] = dataTask;

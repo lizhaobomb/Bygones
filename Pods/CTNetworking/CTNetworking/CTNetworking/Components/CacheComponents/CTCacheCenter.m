@@ -11,7 +11,7 @@
 #import "CTMemoryCachedRecord.h"
 #import "CTLogger.h"
 #import "CTServiceFactory.h"
-#import "NSDictionary+CTNetworkingMethods.h"
+#import "NSDictionary+AXNetworkingMethods.h"
 #import "CTDiskCacheCenter.h"
 #import "CTMemoryCacheDataCenter.h"
 

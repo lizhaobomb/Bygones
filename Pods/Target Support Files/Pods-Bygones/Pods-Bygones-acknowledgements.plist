@@ -48,6 +48,17 @@ THE SOFTWARE.
 			<key>License</key>
 			<string>MIT</string>
 			<key>Title</key>
+			<string>CTMediator</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>MIT
+</string>
+			<key>License</key>
+			<string>MIT</string>
+			<key>Title</key>
 			<string>CTNetworking</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -78,6 +89,16 @@ THE SOFTWARE
 			<string>MIT</string>
 			<key>Title</key>
 			<string>CYLTabBarController</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string></string>
+			<key>License</key>
+			<string>MIT</string>
+			<key>Title</key>
+			<string>HandyFrame</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -205,7 +226,7 @@ SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>Copyright (c) 2016 Olivier Poitrey rs@dailymotion.com
+			<string>Copyright (c) 2009-2017 Olivier Poitrey rs@dailymotion.com
  
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -8,17 +8,16 @@
 
 #import "CTLogger.h"
 
-#import "NSObject+CTNetworkingMethods.h"
-#import "NSMutableString+CTNetworkingMethods.h"
-#import "NSArray+CTNetworkingMethods.h"
+#import "NSObject+AXNetworkingMethods.h"
+#import "NSMutableString+AXNetworkingMethods.h"
+#import "NSArray+AXNetworkingMethods.h"
 #import "NSURLRequest+CTNetworkingMethods.h"
-#import "NSDictionary+CTNetworkingMethods.h"
+#import "NSDictionary+AXNetworkingMethods.h"
+#import "CTMediator+CTAppContext.h"
 
-//#import "CTCommonParamsGenerator.h"
-//#import "CTAppContext.h"
-#import "CTNetworkingConfigurationManager.h"
 #import "CTApiProxy.h"
 #import "CTServiceFactory.h"
+#import "CTNetworkingDefines.h"
 
 @interface CTLogger ()
 
@@ -26,30 +25,23 @@
 
 @implementation CTLogger
 
-+ (NSString *)logDebugInfoWithRequest:(NSURLRequest *)request apiName:(NSString *)apiName service:(CTService *)service
++ (NSString *)logDebugInfoWithRequest:(NSURLRequest *)request apiName:(NSString *)apiName service:(id <CTServiceProtocol>)service
 {
-    NSMutableString *logString = [@"" mutableCopy];
+    NSMutableString *logString = nil;
 #ifdef DEBUG
-    if ([CTNetworkingConfigurationManager sharedInstance].shouldPrintNetworkingLog == NO) {
+    if ([CTMediator sharedInstance].CTNetworking_shouldPrintNetworkingLog == NO) {
         return @"";
     }
     
-    CTServiceAPIEnviroment enviroment = [CTNetworkingConfigurationManager sharedInstance].apiEnviroment;
-    if ([service respondsToSelector:@selector(enviroment)]) {
-        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[service methodSignatureForSelector:@selector(enviroment)]];
-        invocation.target = service;
-        invocation.selector = @selector(enviroment);
-        [invocation invoke];
-        [invocation getReturnValue:&enviroment];
-    }
+    CTServiceAPIEnvironment enviroment = request.service.apiEnvironment;
     NSString *enviromentString = nil;
-    if (enviroment == CTServiceAPIEnviromentDevelop) {
+    if (enviroment == CTServiceAPIEnvironmentDevelop) {
         enviromentString = @"Develop";
     }
-    if (enviroment == CTServiceAPIEnviromentPreRelease) {
+    if (enviroment == CTServiceAPIEnvironmentReleaseCandidate) {
         enviromentString = @"Pre Release";
     }
-    if (enviroment == CTServiceAPIEnviromentRelease) {
+    if (enviroment == CTServiceAPIEnvironmentRelease) {
         enviromentString = @"Release";
     }
     
@@ -59,7 +51,7 @@
     [logString appendFormat:@"Method:\t\t\t%@\n", request.HTTPMethod];
     [logString appendFormat:@"Service:\t\t%@\n", [service class]];
     [logString appendFormat:@"Status:\t\t\t%@\n", enviromentString];
-    [logString CT_appendURLRequest:request];
+    [logString appendURLRequest:request];
     
     [logString appendFormat:@"\n\n********************************************************\nRequest End\n********************************************************\n\n\n\n"];
     NSLog(@"%@", logString);
@@ -69,13 +61,13 @@
 
 + (NSString *)logDebugInfoWithResponse:(NSHTTPURLResponse *)response rawResponseData:(NSData *)rawResponseData responseString:(NSString *)responseString request:(NSURLRequest *)request error:(NSError *)error
 {
-    NSMutableString *logString = [@"" mutableCopy];
+    NSMutableString *logString = nil;
 #ifdef DEBUG
-    if ([CTNetworkingConfigurationManager sharedInstance].shouldPrintNetworkingLog == NO) {
+    if ([CTMediator sharedInstance].CTNetworking_shouldPrintNetworkingLog == NO) {
         return @"";
     }
-    
-    BOOL shouldLogError = error ? YES : NO;
+
+    BOOL isSuccess = error ? NO : YES;
     
     logString = [NSMutableString stringWithString:@"\n\n=========================================\nAPI Response\n=========================================\n\n"];
     
@@ -85,7 +77,7 @@
     [logString appendFormat:@"Request Data:\n\t%@\n\n",request.originRequestParams.CT_jsonString];
     [logString appendFormat:@"Raw Response String:\n\t%@\n\n", [[NSString alloc] initWithData:rawResponseData encoding:NSUTF8StringEncoding]];
     [logString appendFormat:@"Raw Response Header:\n\t%@\n\n", response.allHeaderFields];
-    if (shouldLogError) {
+    if (isSuccess == NO) {
         [logString appendFormat:@"Error Domain:\t\t\t\t\t\t\t%@\n", error.domain];
         [logString appendFormat:@"Error Domain Code:\t\t\t\t\t\t%ld\n", (long)error.code];
         [logString appendFormat:@"Error Localized Description:\t\t\t%@\n", error.localizedDescription];
@@ -95,25 +87,26 @@
     
     [logString appendString:@"\n---------------  Related Request Content  --------------\n"];
     
-    [logString CT_appendURLRequest:request];
+    [logString appendURLRequest:request];
     
     [logString appendFormat:@"\n\n=========================================\nResponse End\n=========================================\n\n"];
-    
+ 
     NSLog(@"%@", logString);
 #endif
+    
     return logString;
 }
 
-+(NSString *)logDebugInfoWithCachedResponse:(CTURLResponse *)response methodName:(NSString *)methodName service:(CTService *)service params:(NSDictionary *)params
++(NSString *)logDebugInfoWithCachedResponse:(CTURLResponse *)response methodName:(NSString *)methodName service:(id <CTServiceProtocol>)service params:(NSDictionary *)params
 {
-    NSMutableString *logString = [@"" mutableCopy];
+    NSMutableString *logString = nil;
 #ifdef DEBUG
-    if ([CTNetworkingConfigurationManager sharedInstance].shouldPrintNetworkingLog == NO) {
+    if ([CTMediator sharedInstance].CTNetworking_shouldPrintNetworkingLog == NO) {
         return @"";
     }
-    
+
     logString = [NSMutableString stringWithString:@"\n\n=========================================\nCached Response                             \n=========================================\n\n"];
-    
+
     [logString appendFormat:@"API Name:\t\t%@\n", [methodName CT_defaultValue:@"N/A"]];
     [logString appendFormat:@"Service:\t\t%@\n", [service class]];
     [logString appendFormat:@"Method Name:\t%@\n", methodName];
@@ -125,6 +118,7 @@
     [logString appendFormat:@"\n\n=========================================\nResponse End\n=========================================\n\n"];
     NSLog(@"%@", logString);
 #endif
+    
     return logString;
 }
 

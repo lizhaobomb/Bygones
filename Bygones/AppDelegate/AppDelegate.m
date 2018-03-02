@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "CYLTabBarControllerConfig.h"
+#import <CTNetworking/CTNetworking.h>
+
 @interface AppDelegate ()
 
 @end

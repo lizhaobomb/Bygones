@@ -7,7 +7,7 @@
 //
 
 #import "CTURLResponse.h"
-#import "NSObject+CTNetworkingMethods.h"
+#import "NSObject+AXNetworkingMethods.h"
 #import "NSURLRequest+CTNetworkingMethods.h"
 
 @interface CTURLResponse ()
@@ -19,49 +19,26 @@
 @property (nonatomic, assign, readwrite) NSInteger requestId;
 @property (nonatomic, copy, readwrite) NSData *responseData;
 @property (nonatomic, assign, readwrite) BOOL isCache;
-@property (nonatomic, strong, readwrite) NSError *error;
+@property (nonatomic, strong, readwrite) NSString *errorMessage;
 
 @end
 
 @implementation CTURLResponse
 
 #pragma mark - life cycle
-//- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData status:(CTURLResponseStatus)status
-//{
-//    self = [super init];
-//    if (self) {
-//        self.contentString = responseString;
-//        self.content = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
-//        self.status = status;
-//        self.requestId = [requestId integerValue];
-//        self.request = request;
-//        self.responseData = responseData;
-////        self.requestParams = request.requestParams;
-//        self.isCache = NO;
-//        self.error = nil;
-//    }
-//    return self;
-//}
-
-- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseData:(NSData *)responseData error:(NSError *)error
+- (instancetype)initWithResponseString:(NSString *)responseString requestId:(NSNumber *)requestId request:(NSURLRequest *)request responseContent:(NSDictionary *)responseContent error:(NSError *)error
 {
     self = [super init];
     if (self) {
         self.contentString = [responseString CT_defaultValue:@""];
-        self.status = [self responseStatusWithError:error];
         self.requestId = [requestId integerValue];
         self.request = request;
-        self.responseData = responseData;
-//        self.requestParams = request.requestParams;
         self.acturlRequestParams = request.actualRequestParams;
         self.originRequestParams = request.originRequestParams;
         self.isCache = NO;
-        self.error = error;
-        if (responseData) {
-            self.content = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableContainers error:NULL];
-        } else {
-            self.content = nil;
-        }
+        self.status = [self responseStatusWithError:error];
+        self.content = responseContent ? responseContent : @{};
+        self.errorMessage = [NSString stringWithFormat:@"%@", error];
     }
     return self;
 }
@@ -74,7 +51,7 @@
         self.status = [self responseStatusWithError:nil];
         self.requestId = 0;
         self.request = nil;
-        self.responseData = [data copy];
+        self.responseData = data;
         self.content = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:NULL];
         self.isCache = YES;
     }
@@ -97,11 +74,23 @@
         if (error.code == NSURLErrorNotConnectedToInternet) {
             result = CTURLResponseStatusErrorNoNetwork;
         }
-
         return result;
     } else {
         return CTURLResponseStatusSuccess;
     }
+}
+
+#pragma mark - getters and setters
+- (NSData *)responseData
+{
+    if (_responseData == nil) {
+        NSError *error = nil;
+        _responseData = [NSJSONSerialization dataWithJSONObject:self.content options:0 error:&error];
+        if (error) {
+            _responseData = [@"" dataUsingEncoding:NSUTF8StringEncoding];
+        }
+    }
+    return _responseData;
 }
 
 @end

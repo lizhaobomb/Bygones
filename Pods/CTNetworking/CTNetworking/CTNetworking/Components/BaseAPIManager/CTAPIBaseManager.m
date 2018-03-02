@@ -9,42 +9,29 @@
 #import "CTAPIBaseManager.h"
 #import "CTNetworking.h"
 #import "CTCacheCenter.h"
+#import "CTLogger.h"
 #import "CTServiceFactory.h"
 #import "CTApiProxy.h"
-#import "CTNetworkingConfigurationManager.h"
-#define AXCallAPI(REQUEST_METHOD, REQUEST_ID)                                                   \
-{                                                                                               \
-__weak typeof(self) weakSelf = self;                                                        \
-REQUEST_ID = [[CTApiProxy sharedInstance] call##REQUEST_METHOD##WithParams:apiParams serviceIdentifier:self.child.serviceType methodName:self.child.methodName success:^(CTURLResponse *response) { \
-__strong typeof(weakSelf) strongSelf = weakSelf;                                        \
-[strongSelf successedOnCallingAPI:response];                                            \
-} fail:^(CTURLResponse *response) {                                                        \
-__strong typeof(weakSelf) strongSelf = weakSelf;                                            \
-CTAPIManagerErrorType errorType = CTAPIManagerErrorTypeDefault;                             \
-if (response.status == CTURLResponseStatusErrorCancel) {                                    \
-errorType = CTAPIManagerErrorTypeCanceled;                                              \
-}                                                                                           \
-if (response.status == CTURLResponseStatusErrorTimeout) {                                   \
-errorType = CTAPIManagerErrorTypeTimeout;                                               \
-}                                                                                           \
-if (response.status == CTURLResponseStatusErrorNoNetwork) {                                 \
-errorType = CTAPIManagerErrorTypeNoNetWork;                                             \
-}                                                                                           \
-[strongSelf failedOnCallingAPI:response withErrorType:errorType];                           \
-}];                                                                                                           \
-[self.requestIdList addObject:@(REQUEST_ID)];                                               \
-}
+#import "CTMediator+CTAppContext.h"
 
+NSString * const kCTUserTokenInvalidNotification = @"kCTUserTokenInvalidNotification";
+NSString * const kCTUserTokenIllegalNotification = @"kCTUserTokenIllegalNotification";
+
+NSString * const kCTUserTokenNotificationUserInfoKeyManagerToContinue = @"kCTUserTokenNotificationUserInfoKeyManagerToContinue";
+NSString * const kCTAPIBaseManagerRequestID = @"kCTAPIBaseManagerRequestID";
 
 
 @interface CTAPIBaseManager ()
 
 @property (nonatomic, strong, readwrite) id fetchedRawData;
 @property (nonatomic, assign, readwrite) BOOL isLoading;
-
 @property (nonatomic, copy, readwrite) NSString *errorMessage;
+
 @property (nonatomic, readwrite) CTAPIManagerErrorType errorType;
 @property (nonatomic, strong) NSMutableArray *requestIdList;
+
+@property (nonatomic, strong, nullable) void (^successBlock)(CTAPIBaseManager *apimanager);
+@property (nonatomic, strong, nullable) void (^failBlock)(CTAPIBaseManager *apimanager);
 
 @end
 
@@ -63,14 +50,14 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
         
         _errorMessage = nil;
         _errorType = CTAPIManagerErrorTypeDefault;
-        
+
         _memoryCacheSecond = 3 * 60;
         _diskCacheSecond = 3 * 60;
+        
         if ([self conformsToProtocol:@protocol(CTAPIManager)]) {
             self.child = (id <CTAPIManager>)self;
         } else {
-            self.child = (id <CTAPIManager>)self;
-            NSException *exception = [[NSException alloc] initWithName:@"CTAPIBaseManager提示" reason:[NSString stringWithFormat:@"%@没有遵循CTAPIManager协议",self.child] userInfo:nil];
+            NSException *exception = [[NSException alloc] init];
             @throw exception;
         }
     }
@@ -83,12 +70,12 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     self.requestIdList = nil;
 }
 
-
 #pragma mark - NSCopying
 - (id)copyWithZone:(NSZone *)zone
 {
     return self;
 }
+
 #pragma mark - public methods
 - (void)cancelAllRequests
 {
@@ -121,62 +108,83 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     return requestId;
 }
 
++ (NSInteger)loadDataWithParams:(NSDictionary *)params success:(void (^)(CTAPIBaseManager *))successCallback fail:(void (^)(CTAPIBaseManager *))failCallback
+{
+    return [[[self alloc] init] loadDataWithParams:params success:successCallback fail:failCallback];
+}
+
+- (NSInteger)loadDataWithParams:(NSDictionary *)params success:(void (^)(CTAPIBaseManager *))successCallback fail:(void (^)(CTAPIBaseManager *))failCallback
+{
+    self.successBlock = successCallback;
+    self.failBlock = failCallback;
+
+    return [self loadDataWithParams:params];
+}
+
 - (NSInteger)loadDataWithParams:(NSDictionary *)params
 {
     NSInteger requestId = 0;
-    NSDictionary *apiParams = [self reformParams:params];
-    if ([self shouldCallAPIWithParams:apiParams]) {
-        if ([self.validator manager:self isCorrectWithParamsData:apiParams]) {
-
+    NSDictionary *reformedParams = [self reformParams:params];
+    if (reformedParams == nil) {
+        reformedParams = @{};
+    }
+    if ([self shouldCallAPIWithParams:reformedParams]) {
+        CTAPIManagerErrorType errorType = [self.validator manager:self isCorrectWithParamsData:reformedParams];
+        if (errorType == CTAPIManagerErrorTypeNoError) {
+            
             CTURLResponse *response = nil;
-            // 先检查一下是否有缓存
-            if (self.cachePolicy & CTAPIManagerCachePolicyMemory) {
-                response = [[CTCacheCenter sharedInstance] fetchMemoryCacheWithServiceIdentifier:self.child.serviceType methodName:self.child.methodName params:apiParams];
+            // 先检查一下是否有内存缓存
+            if ((self.cachePolicy & CTAPIManagerCachePolicyMemory) && self.shouldIgnoreCache == NO) {
+                response = [[CTCacheCenter sharedInstance] fetchMemoryCacheWithServiceIdentifier:self.child.serviceIdentifier methodName:self.child.methodName params:reformedParams];
             }
             
             // 再检查是否有磁盘缓存
-            if (self.cachePolicy & CTAPIManagerCachePolicyDisk) {
-                response = [[CTCacheCenter sharedInstance] fetchDiskCacheWithServiceIdentifier:self.child.serviceType methodName:self.child.methodName params:apiParams];
+            if ((self.cachePolicy & CTAPIManagerCachePolicyDisk) && self.shouldIgnoreCache == NO) {
+                response = [[CTCacheCenter sharedInstance] fetchDiskCacheWithServiceIdentifier:self.child.serviceIdentifier methodName:self.child.methodName params:reformedParams];
             }
             
             if (response != nil) {
                 [self successedOnCallingAPI:response];
                 return 0;
             }
-
             
             // 实际的网络请求
             if ([self isReachable]) {
                 self.isLoading = YES;
-                switch (self.child.requestType)
-                {
-                    case CTAPIManagerRequestTypeGet:
-                        AXCallAPI(GET, requestId);
-                        break;
-                    case CTAPIManagerRequestTypePost:
-                        AXCallAPI(POST, requestId);
-                        break;
-                    case CTAPIManagerRequestTypePut:
-                        AXCallAPI(PUT, requestId);
-                        break;
-                    case CTAPIManagerRequestTypeDelete:
-                        AXCallAPI(DELETE, requestId);
-                        break;
-                    default:
-                        break;
-                }
                 
-                NSMutableDictionary *params = [apiParams mutableCopy];
-                params[kCTAPIBaseManagerRequestID] = @(requestId);
+                id <CTServiceProtocol> service = [[CTServiceFactory sharedInstance] serviceWithIdentifier:self.child.serviceIdentifier];
+                NSURLRequest *request = [service requestWithParams:reformedParams methodName:self.child.methodName requestType:self.child.requestType];
+                request.service = service;
+                [CTLogger logDebugInfoWithRequest:request apiName:self.child.methodName service:service];
+                
+                NSNumber *requestId = [[CTApiProxy sharedInstance] callApiWithRequest:request success:^(CTURLResponse *response) {
+                    [self successedOnCallingAPI:response];
+                } fail:^(CTURLResponse *response) {
+                    CTAPIManagerErrorType errorType = CTAPIManagerErrorTypeDefault;
+                    if (response.status == CTURLResponseStatusErrorCancel) {
+                        errorType = CTAPIManagerErrorTypeCanceled;
+                    }
+                    if (response.status == CTURLResponseStatusErrorTimeout) {
+                        errorType = CTAPIManagerErrorTypeTimeout;
+                    }
+                    if (response.status == CTURLResponseStatusErrorNoNetwork) {
+                        errorType = CTAPIManagerErrorTypeNoNetWork;
+                    }
+                    [self failedOnCallingAPI:response withErrorType:errorType];
+                }];
+                [self.requestIdList addObject:requestId];
+                
+                NSMutableDictionary *params = [reformedParams mutableCopy];
+                params[kCTAPIBaseManagerRequestID] = requestId;
                 [self afterCallingAPIWithParams:params];
-                return requestId;
-                
+                return [requestId integerValue];
+            
             } else {
                 [self failedOnCallingAPI:nil withErrorType:CTAPIManagerErrorTypeNoNetWork];
                 return requestId;
             }
         } else {
-            [self failedOnCallingAPI:nil withErrorType:CTAPIManagerErrorTypeParamsError];
+            [self failedOnCallingAPI:nil withErrorType:errorType];
             return requestId;
         }
     }
@@ -186,6 +194,7 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
 #pragma mark - api callbacks
 - (void)successedOnCallingAPI:(CTURLResponse *)response
 {
+
     self.isLoading = NO;
     self.response = response;
     
@@ -194,16 +203,25 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     } else {
         self.fetchedRawData = [response.responseData copy];
     }
+    
     [self removeRequestIdWithRequestID:response.requestId];
     
-    if ([self.validator manager:self isCorrectWithCallBackData:response.content]) {
+    CTAPIManagerErrorType errorType = [self.validator manager:self isCorrectWithCallBackData:response.content];
+    if (errorType == CTAPIManagerErrorTypeNoError) {
+        
         if (self.cachePolicy != CTAPIManagerCachePolicyNoCache && response.isCache == NO) {
             if (self.cachePolicy & CTAPIManagerCachePolicyMemory) {
-                [[CTCacheCenter sharedInstance] saveMemoryCacheWithResponse:response serviceIdentifier:self.child.serviceType methodName:self.child.methodName cacheTime:self.memoryCacheSecond];
+                [[CTCacheCenter sharedInstance] saveMemoryCacheWithResponse:response
+                                                          serviceIdentifier:self.child.serviceIdentifier
+                                                                 methodName:self.child.methodName
+                                                                  cacheTime:self.memoryCacheSecond];
             }
             
             if (self.cachePolicy & CTAPIManagerCachePolicyDisk) {
-                [[CTCacheCenter sharedInstance] saveDiskCacheWithResponse:response serviceIdentifier:self.child.serviceType methodName:self.child.methodName cacheTime:self.diskCacheSecond];
+                [[CTCacheCenter sharedInstance] saveDiskCacheWithResponse:response
+                                                        serviceIdentifier:self.child.serviceIdentifier
+                                                               methodName:self.child.methodName
+                                                                cacheTime:self.diskCacheSecond];
             }
         }
         
@@ -211,45 +229,78 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
             [self.interceptor manager:self didReceiveResponse:response];
         }
         if ([self beforePerformSuccessWithResponse:response]) {
-            __weak typeof(self) weakSelf = self;
             dispatch_async(dispatch_get_main_queue(), ^{
-                __strong typeof(weakSelf) strongSelf = weakSelf;
-                [strongSelf.delegate managerCallAPIDidSuccess:strongSelf];
+                if ([self.delegate respondsToSelector:@selector(managerCallAPIDidSuccess:)]) {
+                    [self.delegate managerCallAPIDidSuccess:self];
+                }
+                if (self.successBlock) {
+                    self.successBlock(self);
+                }
             });
         }
         [self afterPerformSuccessWithResponse:response];
     } else {
-        [self failedOnCallingAPI:response withErrorType:CTAPIManagerErrorTypeNoNetWork];
-    }}
+        [self failedOnCallingAPI:response withErrorType:errorType];
+    }
+}
 
 - (void)failedOnCallingAPI:(CTURLResponse *)response withErrorType:(CTAPIManagerErrorType)errorType
 {
-    NSString *serviceIdentifier = self.child.serviceType;
-    CTService *service = [[CTServiceFactory sharedInstance] serviceWithIdentifier:serviceIdentifier];
-    
     self.isLoading = NO;
-    self.response = response;
-    BOOL needCallBack = YES;
-    
-    if ([service.child respondsToSelector:@selector(shouldCallBackByFailedOnCallingAPI:)]) {
-        needCallBack = [service.child shouldCallBackByFailedOnCallingAPI:self];
+    if (response) {
+        self.response = response;
     }
-    
-    //由service决定是否结束回调
-    if (!needCallBack) {
-        return;
-    }
-    
-    //继续错误的处理
     self.errorType = errorType;
     [self removeRequestIdWithRequestID:response.requestId];
-    
-    if (response.content) {
-        self.fetchedRawData = [response.content copy];
-    } else {
-        self.fetchedRawData = [response.responseData copy];
+
+        // user token 无效，重新登录
+        if (errorType == CTAPIManagerErrorTypeNeedLogin) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCTUserTokenIllegalNotification
+                                                                object:nil
+                                                              userInfo:@{
+                                                                         kCTUserTokenNotificationUserInfoKeyManagerToContinue:self
+                                                                         }];
+            return;
+        }
+
+        NSString *resCode = [NSString stringWithFormat:@"%@", response.content[@"resCode"]];
+        if ([resCode isEqualToString:@"00100009"]
+            || [resCode isEqualToString:@"05111001"]
+            || [resCode isEqualToString:@"05111002"]
+            || [resCode isEqualToString:@"1080002"]
+            ) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kCTUserTokenIllegalNotification
+                                                                object:nil
+                                                              userInfo:@{
+                                                                         kCTUserTokenNotificationUserInfoKeyManagerToContinue:self
+                                                                         }];
+            return;
+        }
+
+    // 可以自动处理的错误
+    if (errorType == CTAPIManagerErrorTypeNeedAccessToken) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kCTUserTokenInvalidNotification
+                                                            object:nil
+                                                          userInfo:@{
+                                                                     kCTUserTokenNotificationUserInfoKeyManagerToContinue:self
+                                                                     }];
+        return;
     }
-    
+
+    NSString *errorCode = [NSString stringWithFormat:@"%@", response.content[@"errorCode"]];
+    if ([response.content[@"errorMsg"] isEqualToString:@"invalid token"]
+        || [response.content[@"errorMsg"] isEqualToString:@"access_token is required"]
+        || [errorCode isEqualToString:@"BL10015"]
+        ) {
+        // token 失效
+        [[NSNotificationCenter defaultCenter] postNotificationName:kCTUserTokenInvalidNotification
+                                                            object:nil
+                                                          userInfo:@{
+                                                                     kCTUserTokenNotificationUserInfoKeyManagerToContinue:self
+                                                                     }];
+        return;
+    }
+
     // 常规错误
     if (errorType == CTAPIManagerErrorTypeNoNetWork) {
         self.errorMessage = @"无网络连接，请检查网络";
@@ -260,38 +311,37 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     if (errorType == CTAPIManagerErrorTypeCanceled) {
         self.errorMessage = @"您已取消";
     }
+    if (errorType == CTAPIManagerErrorTypeDownGrade) {
+        self.errorMessage = @"网络拥塞";
+    }
     
-    __weak typeof(self) weakSelf = self;
+    // 其他错误
     dispatch_async(dispatch_get_main_queue(), ^{
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        if ([strongSelf.interceptor respondsToSelector:@selector(manager:didReceiveResponse:)]) {
-            [strongSelf.interceptor manager:strongSelf didReceiveResponse:response];
+        if ([self.interceptor respondsToSelector:@selector(manager:didReceiveResponse:)]) {
+            [self.interceptor manager:self didReceiveResponse:response];
         }
-        if ([strongSelf beforePerformFailWithResponse:response]) {
-            [strongSelf.delegate managerCallAPIDidFailed:strongSelf];
+        if ([self beforePerformFailWithResponse:response]) {
+            [self.delegate managerCallAPIDidFailed:self];
         }
-        [strongSelf afterPerformFailWithResponse:response];
+        if (self.failBlock) {
+            self.failBlock(self);
+        }
+        [self afterPerformFailWithResponse:response];
     });
-
 }
-
-
-
-
-
 
 #pragma mark - method for interceptor
 
 /*
- 拦截器的功能可以由子类通过继承实现，也可以由其它对象实现,两种做法可以共存
- 当两种情况共存的时候，子类重载的方法一定要调用一下super
- 然后它们的调用顺序是BaseManager会先调用子类重载的实现，再调用外部interceptor的实现
- 
- notes:
- 正常情况下，拦截器是通过代理的方式实现的，因此可以不需要以下这些代码
- 但是为了将来拓展方便，如果在调用拦截器之前manager又希望自己能够先做一些事情，所以这些方法还是需要能够被继承重载的
- 所有重载的方法，都要调用一下super,这样才能保证外部interceptor能够被调到
- 这就是decorate pattern
+    拦截器的功能可以由子类通过继承实现，也可以由其它对象实现,两种做法可以共存
+    当两种情况共存的时候，子类重载的方法一定要调用一下super
+    然后它们的调用顺序是BaseManager会先调用子类重载的实现，再调用外部interceptor的实现
+    
+    notes:
+        正常情况下，拦截器是通过代理的方式实现的，因此可以不需要以下这些代码
+        但是为了将来拓展方便，如果在调用拦截器之前manager又希望自己能够先做一些事情，所以这些方法还是需要能够被继承重载的
+        所有重载的方法，都要调用一下super,这样才能保证外部interceptor能够被调到
+        这就是decorate pattern
  */
 - (BOOL)beforePerformSuccessWithResponse:(CTURLResponse *)response
 {
@@ -348,7 +398,6 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
 - (void)cleanData
 {
     self.fetchedRawData = nil;
-    self.errorMessage = nil;
     self.errorType = CTAPIManagerErrorTypeDefault;
 }
 
@@ -374,11 +423,6 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     }
 }
 
-- (BOOL)shouldCache
-{
-    return [CTNetworkingConfigurationManager sharedInstance].shouldCache;
-}
-
 #pragma mark - private methods
 - (void)removeRequestIdWithRequestID:(NSInteger)requestId
 {
@@ -393,10 +437,7 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
     }
 }
 
-
-
 #pragma mark - getters and setters
-
 - (NSMutableArray *)requestIdList
 {
     if (_requestIdList == nil) {
@@ -407,7 +448,7 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
 
 - (BOOL)isReachable
 {
-    BOOL isReachability = [CTNetworkingConfigurationManager sharedInstance].isReachable;
+    BOOL isReachability = [[CTMediator sharedInstance] CTNetworking_isReachable];
     if (!isReachability) {
         self.errorType = CTAPIManagerErrorTypeNoNetWork;
     }
@@ -420,11 +461,6 @@ errorType = CTAPIManagerErrorTypeNoNetWork;                                     
         _isLoading = NO;
     }
     return _isLoading;
-}
-
-- (BOOL)shouldLoadFromNative
-{
-    return NO;
 }
 
 @end

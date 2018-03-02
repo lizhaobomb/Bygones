@@ -96,7 +96,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
     CYLBaseNavigationController *officialNav = [[CYLBaseNavigationController alloc] initWithRootViewController:officialVC];
     MineViewController *mineVC = [[MineViewController alloc] init];
     CYLBaseNavigationController *mineNav = [[CYLBaseNavigationController alloc] initWithRootViewController:mineVC];
-    NSArray *viewControllers = @[homeNav, messageNav, officialNav, mineNav];
+    NSArray *viewControllers = @[homeNav, officialNav, messageNav, mineNav];
     return viewControllers;
 }
 
