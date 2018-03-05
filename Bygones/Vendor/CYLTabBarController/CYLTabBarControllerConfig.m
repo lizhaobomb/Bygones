@@ -11,6 +11,7 @@
 #import "DiscoveryViewController.h"
 #import "MessageViewController.h"
 #import "MineViewController.h"
+#import "DiyCodeNewsViewController.h"
 
 static CGFloat const CYLTabBarControllerHeight = 40.f;
 
@@ -90,13 +91,13 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
 - (NSArray *)viewControllers {
     HomeViewController *homeVC = [[HomeViewController alloc] init];
     CYLBaseNavigationController *homeNav = [[CYLBaseNavigationController alloc] initWithRootViewController:homeVC];
-    MessageViewController *messageVC = [[MessageViewController alloc] init];
-    CYLBaseNavigationController *messageNav = [[CYLBaseNavigationController alloc] initWithRootViewController:messageVC];
+    DiyCodeNewsViewController *newsVC = [[DiyCodeNewsViewController alloc] init];
+    CYLBaseNavigationController *newsNav = [[CYLBaseNavigationController alloc] initWithRootViewController:newsVC];
     DiscoveryViewController *officialVC = [[DiscoveryViewController alloc] init];
     CYLBaseNavigationController *officialNav = [[CYLBaseNavigationController alloc] initWithRootViewController:officialVC];
     MineViewController *mineVC = [[MineViewController alloc] init];
     CYLBaseNavigationController *mineNav = [[CYLBaseNavigationController alloc] initWithRootViewController:mineVC];
-    NSArray *viewControllers = @[homeNav, officialNav, messageNav, mineNav];
+    NSArray *viewControllers = @[homeNav, officialNav, newsNav, mineNav];
     return viewControllers;
 }
 
