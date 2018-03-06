@@ -14,10 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - ChameleonFramework (2.1.0):
+    - ChameleonFramework/Default (= 2.1.0)
+  - ChameleonFramework/Default (2.1.0)
   - CTMediator (13)
   - CTNetworking (7):
     - AFNetworking
     - CTMediator
+  - CTPersistance (165):
+    - CTMediator
+    - SQLCipher
   - CYLTabBarController (1.14.2)
   - HandyFrame (1.2.0)
   - MJExtension (3.0.13)
@@ -28,10 +34,17 @@ PODS:
   - SDWebImage (4.3.2):
     - SDWebImage/Core (= 4.3.2)
   - SDWebImage/Core (4.3.2)
+  - SQLCipher (3.4.2):
+    - SQLCipher/standard (= 3.4.2)
+  - SQLCipher/common (3.4.2)
+  - SQLCipher/standard (3.4.2):
+    - SQLCipher/common
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - ChameleonFramework
   - CTNetworking
+  - CTPersistance
   - CYLTabBarController (~> 1.14.1)
   - HandyFrame
   - MJExtension (~> 3.0.13)
@@ -41,8 +54,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CTMediator: 4cbf8ede42efc6b31715be88b78bdc9d94efa840
   CTNetworking: 882457d4a31259a87c4335d5cf7c2b4338393075
+  CTPersistance: 3deaec1940f9fd645b2cfd8c8e18bdc8fa92b098
   CYLTabBarController: 5eac1940e20aa934a609ecec38837da63a41dcfe
   HandyFrame: 437df83ba7563c56cd55b9bd0128561995463110
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
@@ -50,7 +65,8 @@ SPEC CHECKSUMS:
   SDAutoLayout: c5509e77ae75735d9a39f7bc83dba6d3f75d49d8
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
+  SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
 
-PODFILE CHECKSUM: 5d832c5a77719acee701987c2892beec7687aa45
+PODFILE CHECKSUM: 0598b440cb9e200cb697bdcbcd1a01b995d81eb4
 
 COCOAPODS: 1.4.0

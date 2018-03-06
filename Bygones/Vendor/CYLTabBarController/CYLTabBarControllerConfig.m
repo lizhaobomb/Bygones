@@ -54,6 +54,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
         
         [self customizeTabBarAppearance:tabBarController];
         _tabBarController = tabBarController;
+        _tabBarController.delegate = self;
     }
     return _tabBarController;
 }
@@ -203,6 +204,18 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UITabBarControllerDelegate
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if (tabBarController.selectedIndex == 3) {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+    
 }
 
 @end

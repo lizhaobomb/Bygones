@@ -114,6 +114,10 @@
 		F182B592204CE9920016DEB2 /* Target_CTAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B590204CE9920016DEB2 /* Target_CTAppContext.m */; };
 		F182B598204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B597204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m */; };
 		F182B59C204D24120016DEB2 /* DiyCodeNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B59B204D24120016DEB2 /* DiyCodeNewsViewController.m */; };
+		F182B5A2204E3A3F0016DEB2 /* DiyCodeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A1204E3A3F0016DEB2 /* DiyCodeLoginViewController.m */; };
+		F182B5A5204E858A0016DEB2 /* DiyCodeOauthApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A4204E858A0016DEB2 /* DiyCodeOauthApiManager.m */; };
+		F182B5A9204E85DA0016DEB2 /* DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A8204E85DA0016DEB2 /* DiyCodeOauthService.m */; };
+		F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */; };
 		F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */; };
 		F1F460E32046559300431FDE /* DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460E22046559300431FDE /* DiyCodeService.m */; };
 /* End PBXBuildFile section */
@@ -286,6 +290,15 @@
 		F182B597204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeNewsApiManager.m; sourceTree = "<group>"; };
 		F182B59A204D24120016DEB2 /* DiyCodeNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeNewsViewController.h; sourceTree = "<group>"; };
 		F182B59B204D24120016DEB2 /* DiyCodeNewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeNewsViewController.m; sourceTree = "<group>"; };
+		F182B5A0204E3A3F0016DEB2 /* DiyCodeLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeLoginViewController.h; sourceTree = "<group>"; };
+		F182B5A1204E3A3F0016DEB2 /* DiyCodeLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeLoginViewController.m; sourceTree = "<group>"; };
+		F182B5A3204E858A0016DEB2 /* DiyCodeOauthApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeOauthApiManager.h; sourceTree = "<group>"; };
+		F182B5A4204E858A0016DEB2 /* DiyCodeOauthApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeOauthApiManager.m; sourceTree = "<group>"; };
+		F182B5A7204E85DA0016DEB2 /* DiyCodeOauthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeOauthService.h; sourceTree = "<group>"; };
+		F182B5A8204E85DA0016DEB2 /* DiyCodeOauthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeOauthService.m; sourceTree = "<group>"; };
+		F182B5AA204E903D0016DEB2 /* Target_DiyCodeOauthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_DiyCodeOauthService.h; sourceTree = "<group>"; };
+		F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_DiyCodeOauthService.m; sourceTree = "<group>"; };
+		F182B5AE204E98BE0016DEB2 /* DiyCodeDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeDefines.h; sourceTree = "<group>"; };
 		F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsApiManager.h; sourceTree = "<group>"; };
 		F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsApiManager.m; sourceTree = "<group>"; };
 		F1F460E12046559300431FDE /* DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeService.h; sourceTree = "<group>"; };
@@ -881,6 +894,8 @@
 		F182B593204CE9F00016DEB2 /* DiyCode */ = {
 			isa = PBXGroup;
 			children = (
+				F182B5AD204E98A80016DEB2 /* DiyCodeDefines */,
+				F182B59D204E33320016DEB2 /* Login */,
 				F182B594204CEA0D0016DEB2 /* News */,
 			);
 			path = DiyCode;
@@ -911,6 +926,53 @@
 				F182B59B204D24120016DEB2 /* DiyCodeNewsViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F182B59D204E33320016DEB2 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5A6204E85A20016DEB2 /* Service */,
+				F182B59F204E39480016DEB2 /* ViewController */,
+				F182B59E204E39330016DEB2 /* ApiManager */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		F182B59E204E39330016DEB2 /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5A3204E858A0016DEB2 /* DiyCodeOauthApiManager.h */,
+				F182B5A4204E858A0016DEB2 /* DiyCodeOauthApiManager.m */,
+			);
+			path = ApiManager;
+			sourceTree = "<group>";
+		};
+		F182B59F204E39480016DEB2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5A0204E3A3F0016DEB2 /* DiyCodeLoginViewController.h */,
+				F182B5A1204E3A3F0016DEB2 /* DiyCodeLoginViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F182B5A6204E85A20016DEB2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5A7204E85DA0016DEB2 /* DiyCodeOauthService.h */,
+				F182B5A8204E85DA0016DEB2 /* DiyCodeOauthService.m */,
+				F182B5AA204E903D0016DEB2 /* Target_DiyCodeOauthService.h */,
+				F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F182B5AD204E98A80016DEB2 /* DiyCodeDefines */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5AE204E98BE0016DEB2 /* DiyCodeDefines.h */,
+			);
+			path = DiyCodeDefines;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1099,10 +1161,12 @@
 			files = (
 				F16C4CD61FE3CD510086117A /* TTTAttributedLabel.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
+				F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */,
 				F182B592204CE9920016DEB2 /* Target_CTAppContext.m in Sources */,
 				F16C4CD81FE3CD510086117A /* NSAttributedString+MLLabel.m in Sources */,
 				F16C4CD91FE3CD510086117A /* NSAttributedString+MLExpression.m in Sources */,
 				F182B598204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m in Sources */,
+				F182B5A2204E3A3F0016DEB2 /* DiyCodeLoginViewController.m in Sources */,
 				F16C4CDA1FE3CD510086117A /* MLTextAttachment.m in Sources */,
 				F16C4CDB1FE3CD510086117A /* NSString+MLExpression.m in Sources */,
 				F16C4CDC1FE3CD510086117A /* MLExpressionManager.m in Sources */,
@@ -1131,6 +1195,7 @@
 				F1560BF01FE3BF0C0030B958 /* ThreeFirstCell.m in Sources */,
 				F16C4C7C1FE3C9E00086117A /* SDBaseTableViewController.m in Sources */,
 				F1560BE01FE3B2FC0030B958 /* DiscoveryViewController.m in Sources */,
+				F182B5A9204E85DA0016DEB2 /* DiyCodeOauthService.m in Sources */,
 				F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */,
 				F16C4C9D1FE3CA3F0086117A /* SDTimeLineCellOperationMenu.m in Sources */,
 				F16C4C841FE3CA220086117A /* SDTimeLineCellModel.m in Sources */,
@@ -1139,6 +1204,7 @@
 				F1560BFE1FE3BF230030B958 /* Ads.m in Sources */,
 				F1560BF11FE3BF0C0030B958 /* ThreeBaseCell.m in Sources */,
 				F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */,
+				F182B5A5204E858A0016DEB2 /* DiyCodeOauthApiManager.m in Sources */,
 				F16C4C9C1FE3CA3F0086117A /* SDTimeLineCellCommentView.m in Sources */,
 				F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */,
 				F182B59C204D24120016DEB2 /* DiyCodeNewsViewController.m in Sources */,

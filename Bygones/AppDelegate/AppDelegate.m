@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "CYLTabBarControllerConfig.h"
 #import <CTNetworking/CTNetworking.h>
+#import "DiyCodeLoginViewController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <CYLTabBarControllerDelegate,UITabBarControllerDelegate>
 
 @end
 
@@ -22,6 +23,7 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     CYLTabBarControllerConfig *tabBarControllerConfig = [[CYLTabBarControllerConfig alloc] init];
     CYLTabBarController *tabBarController = tabBarControllerConfig.tabBarController;
+    tabBarController.delegate = self;
     [self.window setRootViewController:tabBarController];
     
     [self.window makeKeyAndVisible];
@@ -55,5 +57,20 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectControl:(UIControl *)control {
+}
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    __block BOOL shouldSelectedVC = YES;
+    [tabBarController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj == viewController && idx == 3) {
+            shouldSelectedVC = NO;
+            DiyCodeLoginViewController *loginVC = [[DiyCodeLoginViewController alloc] init];
+            [self.window.rootViewController presentViewController:loginVC animated:YES completion:nil];
+        }
+    }];
+    return shouldSelectedVC;
+}
 
 @end
