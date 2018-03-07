@@ -16,4 +16,5 @@ pod 'MJRefresh', '~> 3.1.14'
 pod 'SDCycleScrollView', '~> 1.73'
 pod 'HandyFrame'
 pod 'ChameleonFramework'
+pod 'TYPagerController'
 end

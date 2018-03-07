@@ -12,7 +12,7 @@
 #import "MessageViewController.h"
 #import "MineViewController.h"
 #import "DiyCodeNewsViewController.h"
-
+#import "DiyCodeHomeViewController.h"
 static CGFloat const CYLTabBarControllerHeight = 40.f;
 
 @interface CYLBaseNavigationController : UINavigationController
@@ -66,7 +66,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
                                                  CYLTabBarItemSelectedImage : @"home_highlight", /* NSString and UIImage are supported*/
                                                  };
     NSDictionary *secondTabBarItemsAttributes = @{
-                                                  CYLTabBarItemTitle : @"发现",
+                                                  CYLTabBarItemTitle : @"DiyCode",
                                                   CYLTabBarItemImage : @"mycity_normal",
                                                   CYLTabBarItemSelectedImage : @"mycity_highlight",
                                                   };
@@ -92,13 +92,13 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
 - (NSArray *)viewControllers {
     HomeViewController *homeVC = [[HomeViewController alloc] init];
     CYLBaseNavigationController *homeNav = [[CYLBaseNavigationController alloc] initWithRootViewController:homeVC];
-    DiyCodeNewsViewController *newsVC = [[DiyCodeNewsViewController alloc] init];
-    CYLBaseNavigationController *newsNav = [[CYLBaseNavigationController alloc] initWithRootViewController:newsVC];
+    DiyCodeHomeViewController *diyCodeHomeVC = [[DiyCodeHomeViewController alloc] init];
+    CYLBaseNavigationController *diyCodeHomeNav = [[CYLBaseNavigationController alloc] initWithRootViewController:diyCodeHomeVC];
     DiscoveryViewController *officialVC = [[DiscoveryViewController alloc] init];
     CYLBaseNavigationController *officialNav = [[CYLBaseNavigationController alloc] initWithRootViewController:officialVC];
     MineViewController *mineVC = [[MineViewController alloc] init];
     CYLBaseNavigationController *mineNav = [[CYLBaseNavigationController alloc] initWithRootViewController:mineVC];
-    NSArray *viewControllers = @[homeNav, officialNav, newsNav, mineNav];
+    NSArray *viewControllers = @[homeNav, officialNav, diyCodeHomeNav, mineNav];
     return viewControllers;
 }
 

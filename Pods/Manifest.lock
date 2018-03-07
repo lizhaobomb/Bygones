@@ -39,6 +39,7 @@ PODS:
   - SQLCipher/common (3.4.2)
   - SQLCipher/standard (3.4.2):
     - SQLCipher/common
+  - TYPagerController (2.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.14)
   - SDAutoLayout (~> 2.2.0)
   - SDCycleScrollView (~> 1.73)
+  - TYPagerController
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -66,7 +68,8 @@ SPEC CHECKSUMS:
   SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
   SQLCipher: f9fcf29b2e59ced7defc2a2bdd0ebe79b40d4990
+  TYPagerController: 262556ecef99986d26ed77fb1288a198ed42f4af
 
-PODFILE CHECKSUM: 0598b440cb9e200cb697bdcbcd1a01b995d81eb4
+PODFILE CHECKSUM: a7a703cdb1dcdddd7dd945a109ee7457ee08f416
 
 COCOAPODS: 1.4.0

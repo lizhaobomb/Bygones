@@ -118,6 +118,7 @@
 		F182B5A5204E858A0016DEB2 /* DiyCodeOauthApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A4204E858A0016DEB2 /* DiyCodeOauthApiManager.m */; };
 		F182B5A9204E85DA0016DEB2 /* DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A8204E85DA0016DEB2 /* DiyCodeOauthService.m */; };
 		F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */; };
+		F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5D9204FE9560016DEB2 /* DiyCodeHomeViewController.m */; };
 		F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */; };
 		F1F460E32046559300431FDE /* DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460E22046559300431FDE /* DiyCodeService.m */; };
 /* End PBXBuildFile section */
@@ -299,6 +300,8 @@
 		F182B5AA204E903D0016DEB2 /* Target_DiyCodeOauthService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_DiyCodeOauthService.h; sourceTree = "<group>"; };
 		F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_DiyCodeOauthService.m; sourceTree = "<group>"; };
 		F182B5AE204E98BE0016DEB2 /* DiyCodeDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeDefines.h; sourceTree = "<group>"; };
+		F182B5D8204FE9560016DEB2 /* DiyCodeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeHomeViewController.h; sourceTree = "<group>"; };
+		F182B5D9204FE9560016DEB2 /* DiyCodeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeHomeViewController.m; sourceTree = "<group>"; };
 		F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsApiManager.h; sourceTree = "<group>"; };
 		F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsApiManager.m; sourceTree = "<group>"; };
 		F1F460E12046559300431FDE /* DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeService.h; sourceTree = "<group>"; };
@@ -894,6 +897,7 @@
 		F182B593204CE9F00016DEB2 /* DiyCode */ = {
 			isa = PBXGroup;
 			children = (
+				F182B5D4204FE93A0016DEB2 /* Home(主页) */,
 				F182B5AD204E98A80016DEB2 /* DiyCodeDefines */,
 				F182B59D204E33320016DEB2 /* Login */,
 				F182B594204CEA0D0016DEB2 /* News */,
@@ -973,6 +977,39 @@
 				F182B5AE204E98BE0016DEB2 /* DiyCodeDefines.h */,
 			);
 			path = DiyCodeDefines;
+			sourceTree = "<group>";
+		};
+		F182B5D4204FE93A0016DEB2 /* Home(主页) */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5D5204FE93A0016DEB2 /* Service */,
+				F182B5D6204FE93A0016DEB2 /* ViewController */,
+				F182B5D7204FE93A0016DEB2 /* ApiManger */,
+			);
+			path = "Home(主页)";
+			sourceTree = "<group>";
+		};
+		F182B5D5204FE93A0016DEB2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F182B5D6204FE93A0016DEB2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F182B5D8204FE9560016DEB2 /* DiyCodeHomeViewController.h */,
+				F182B5D9204FE9560016DEB2 /* DiyCodeHomeViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F182B5D7204FE93A0016DEB2 /* ApiManger */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApiManger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1160,6 +1197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F16C4CD61FE3CD510086117A /* TTTAttributedLabel.m in Sources */,
+				F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
 				F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */,
 				F182B592204CE9920016DEB2 /* Target_CTAppContext.m in Sources */,
