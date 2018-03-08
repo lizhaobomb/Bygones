@@ -56,7 +56,6 @@
 #pragma mark - method
 - (void)loginClicked:(UIButton *)sender {
     [self.oauthApiManager loadData];
-//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)saveToken:(NSDictionary *)obj {
@@ -68,6 +67,7 @@
 - (void)managerCallAPIDidSuccess:(CTAPIBaseManager * _Nonnull)manager {
     if (manager == self.oauthApiManager) {
         [self saveToken:manager.response.content];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 - (void)managerCallAPIDidFailed:(CTAPIBaseManager * _Nonnull)manager {

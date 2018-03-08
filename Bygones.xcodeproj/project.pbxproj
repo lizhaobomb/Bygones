@@ -12,6 +12,13 @@
 		F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12733BF1FE2BD97007E263E /* Assets.xcassets */; };
 		F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */; };
 		F12733C61FE2BD97007E263E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733C51FE2BD97007E263E /* main.m */; };
+		F129D45F2050D99E00925CE8 /* DiyCodeTopicsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D45E2050D99E00925CE8 /* DiyCodeTopicsViewController.m */; };
+		F129D46C2050D9D000925CE8 /* Target_DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4642050D9D000925CE8 /* Target_DiyCodeService.m */; };
+		F129D46D2050D9D000925CE8 /* Target_CTAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4662050D9D000925CE8 /* Target_CTAppContext.m */; };
+		F129D46E2050D9D000925CE8 /* DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4692050D9D000925CE8 /* DiyCodeService.m */; };
+		F129D4712050DA2000925CE8 /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */; };
+		F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */; };
+		F129D47A205143B300925CE8 /* DiyCodeSitesApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */; };
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
@@ -110,8 +117,6 @@
 		F16C4D4E1FE3D4E80086117A /* AlbumComment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D301FE3D4840086117A /* AlbumComment@3x.png */; };
 		F16C4D501FE3D54D0086117A /* pbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D4F1FE3D54D0086117A /* pbg.jpg */; };
 		F16C4D521FE3D58E0086117A /* picon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F16C4D511FE3D58E0086117A /* picon.jpg */; };
-		F182B57D2049336A0016DEB2 /* Target_DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */; };
-		F182B592204CE9920016DEB2 /* Target_CTAppContext.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B590204CE9920016DEB2 /* Target_CTAppContext.m */; };
 		F182B598204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B597204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m */; };
 		F182B59C204D24120016DEB2 /* DiyCodeNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B59B204D24120016DEB2 /* DiyCodeNewsViewController.m */; };
 		F182B5A2204E3A3F0016DEB2 /* DiyCodeLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A1204E3A3F0016DEB2 /* DiyCodeLoginViewController.m */; };
@@ -119,8 +124,6 @@
 		F182B5A9204E85DA0016DEB2 /* DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5A8204E85DA0016DEB2 /* DiyCodeOauthService.m */; };
 		F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5AB204E903D0016DEB2 /* Target_DiyCodeOauthService.m */; };
 		F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F182B5D9204FE9560016DEB2 /* DiyCodeHomeViewController.m */; };
-		F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */; };
-		F1F460E32046559300431FDE /* DiyCodeService.m in Sources */ = {isa = PBXBuildFile; fileRef = F1F460E22046559300431FDE /* DiyCodeService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +137,20 @@
 		F12733C21FE2BD97007E263E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F12733C41FE2BD97007E263E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F12733C51FE2BD97007E263E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F129D45D2050D99E00925CE8 /* DiyCodeTopicsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsViewController.h; sourceTree = "<group>"; };
+		F129D45E2050D99E00925CE8 /* DiyCodeTopicsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsViewController.m; sourceTree = "<group>"; };
+		F129D4622050D9D000925CE8 /* DiyCodeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyCodeService.h; sourceTree = "<group>"; };
+		F129D4642050D9D000925CE8 /* Target_DiyCodeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_DiyCodeService.m; sourceTree = "<group>"; };
+		F129D4662050D9D000925CE8 /* Target_CTAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTAppContext.m; sourceTree = "<group>"; };
+		F129D4672050D9D000925CE8 /* Target_CTAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTAppContext.h; sourceTree = "<group>"; };
+		F129D4692050D9D000925CE8 /* DiyCodeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyCodeService.m; sourceTree = "<group>"; };
+		F129D46A2050D9D000925CE8 /* Target_DiyCodeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_DiyCodeService.h; sourceTree = "<group>"; };
+		F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsApiManager.m; sourceTree = "<group>"; };
+		F129D4702050DA2000925CE8 /* DiyCodeTopicsApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsApiManager.h; sourceTree = "<group>"; };
+		F129D4752051438D00925CE8 /* DiyCodeSitesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesViewController.h; sourceTree = "<group>"; };
+		F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesViewController.m; sourceTree = "<group>"; };
+		F129D478205143B300925CE8 /* DiyCodeSitesApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesApiManager.h; sourceTree = "<group>"; };
+		F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesApiManager.m; sourceTree = "<group>"; };
 		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -283,10 +300,6 @@
 		F16C4D3F1FE3D4C10086117A /* LikeCmtBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeCmtBg@2x.png"; sourceTree = "<group>"; };
 		F16C4D4F1FE3D54D0086117A /* pbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pbg.jpg; sourceTree = "<group>"; };
 		F16C4D511FE3D58E0086117A /* picon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picon.jpg; sourceTree = "<group>"; };
-		F182B57B2049336A0016DEB2 /* Target_DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Target_DiyCodeService.h; sourceTree = "<group>"; };
-		F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Target_DiyCodeService.m; sourceTree = "<group>"; };
-		F182B590204CE9920016DEB2 /* Target_CTAppContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Target_CTAppContext.m; sourceTree = "<group>"; };
-		F182B591204CE9920016DEB2 /* Target_CTAppContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Target_CTAppContext.h; sourceTree = "<group>"; };
 		F182B596204CEA4A0016DEB2 /* DiyCodeNewsApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeNewsApiManager.h; sourceTree = "<group>"; };
 		F182B597204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeNewsApiManager.m; sourceTree = "<group>"; };
 		F182B59A204D24120016DEB2 /* DiyCodeNewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeNewsViewController.h; sourceTree = "<group>"; };
@@ -302,10 +315,6 @@
 		F182B5AE204E98BE0016DEB2 /* DiyCodeDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeDefines.h; sourceTree = "<group>"; };
 		F182B5D8204FE9560016DEB2 /* DiyCodeHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeHomeViewController.h; sourceTree = "<group>"; };
 		F182B5D9204FE9560016DEB2 /* DiyCodeHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeHomeViewController.m; sourceTree = "<group>"; };
-		F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsApiManager.h; sourceTree = "<group>"; };
-		F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsApiManager.m; sourceTree = "<group>"; };
-		F1F460E12046559300431FDE /* DiyCodeService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeService.h; sourceTree = "<group>"; };
-		F1F460E22046559300431FDE /* DiyCodeService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +376,81 @@
 				F12733C51FE2BD97007E263E /* main.m */,
 			);
 			path = Bygones;
+			sourceTree = "<group>";
+		};
+		F129D45A2050D97700925CE8 /* Topics */ = {
+			isa = PBXGroup;
+			children = (
+				F129D45B2050D97700925CE8 /* ApiManager */,
+				F129D45C2050D97700925CE8 /* ViewController */,
+			);
+			path = Topics;
+			sourceTree = "<group>";
+		};
+		F129D45B2050D97700925CE8 /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				F129D4702050DA2000925CE8 /* DiyCodeTopicsApiManager.h */,
+				F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */,
+			);
+			path = ApiManager;
+			sourceTree = "<group>";
+		};
+		F129D45C2050D97700925CE8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F129D45D2050D99E00925CE8 /* DiyCodeTopicsViewController.h */,
+				F129D45E2050D99E00925CE8 /* DiyCodeTopicsViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F129D4602050D9D000925CE8 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F129D4652050D9D000925CE8 /* AppContext */,
+				F129D4622050D9D000925CE8 /* DiyCodeService.h */,
+				F129D4692050D9D000925CE8 /* DiyCodeService.m */,
+				F129D46A2050D9D000925CE8 /* Target_DiyCodeService.h */,
+				F129D4642050D9D000925CE8 /* Target_DiyCodeService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		F129D4652050D9D000925CE8 /* AppContext */ = {
+			isa = PBXGroup;
+			children = (
+				F129D4662050D9D000925CE8 /* Target_CTAppContext.m */,
+				F129D4672050D9D000925CE8 /* Target_CTAppContext.h */,
+			);
+			path = AppContext;
+			sourceTree = "<group>";
+		};
+		F129D4722051437600925CE8 /* Sites */ = {
+			isa = PBXGroup;
+			children = (
+				F129D4732051437600925CE8 /* ApiManager */,
+				F129D4742051437600925CE8 /* ViewController */,
+			);
+			path = Sites;
+			sourceTree = "<group>";
+		};
+		F129D4732051437600925CE8 /* ApiManager */ = {
+			isa = PBXGroup;
+			children = (
+				F129D478205143B300925CE8 /* DiyCodeSitesApiManager.h */,
+				F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */,
+			);
+			path = ApiManager;
+			sourceTree = "<group>";
+		};
+		F129D4742051437600925CE8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F129D4752051438D00925CE8 /* DiyCodeSitesViewController.h */,
+				F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		F1560BBB1FE3AFFC0030B958 /* Modules */ = {
@@ -613,7 +697,6 @@
 				F1560BD01FE3B2420030B958 /* Controller */,
 				F1560BD11FE3B2420030B958 /* Model */,
 				F1560BD21FE3B2420030B958 /* View */,
-				F1560BD31FE3B2420030B958 /* Service */,
 				F1560BD41FE3B2420030B958 /* Resource */,
 			);
 			path = "Discovery(发现)";
@@ -640,20 +723,6 @@
 			children = (
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		F1560BD31FE3B2420030B958 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				F182B58F204CE9920016DEB2 /* AppContext */,
-				F1F460DE204556C800431FDE /* DiyCodeTopicsApiManager.h */,
-				F1F460DF204556C800431FDE /* DiyCodeTopicsApiManager.m */,
-				F1F460E12046559300431FDE /* DiyCodeService.h */,
-				F1F460E22046559300431FDE /* DiyCodeService.m */,
-				F182B57B2049336A0016DEB2 /* Target_DiyCodeService.h */,
-				F182B57C2049336A0016DEB2 /* Target_DiyCodeService.m */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		F1560BD41FE3B2420030B958 /* Resource */ = {
@@ -885,18 +954,12 @@
 			path = cell_icons;
 			sourceTree = "<group>";
 		};
-		F182B58F204CE9920016DEB2 /* AppContext */ = {
-			isa = PBXGroup;
-			children = (
-				F182B590204CE9920016DEB2 /* Target_CTAppContext.m */,
-				F182B591204CE9920016DEB2 /* Target_CTAppContext.h */,
-			);
-			path = AppContext;
-			sourceTree = "<group>";
-		};
 		F182B593204CE9F00016DEB2 /* DiyCode */ = {
 			isa = PBXGroup;
 			children = (
+				F129D4722051437600925CE8 /* Sites */,
+				F129D4602050D9D000925CE8 /* Service */,
+				F129D45A2050D97700925CE8 /* Topics */,
 				F182B5D4204FE93A0016DEB2 /* Home(主页) */,
 				F182B5AD204E98A80016DEB2 /* DiyCodeDefines */,
 				F182B59D204E33320016DEB2 /* Login */,
@@ -1200,17 +1263,17 @@
 				F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
 				F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */,
-				F182B592204CE9920016DEB2 /* Target_CTAppContext.m in Sources */,
 				F16C4CD81FE3CD510086117A /* NSAttributedString+MLLabel.m in Sources */,
 				F16C4CD91FE3CD510086117A /* NSAttributedString+MLExpression.m in Sources */,
 				F182B598204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m in Sources */,
+				F129D45F2050D99E00925CE8 /* DiyCodeTopicsViewController.m in Sources */,
 				F182B5A2204E3A3F0016DEB2 /* DiyCodeLoginViewController.m in Sources */,
+				F129D46E2050D9D000925CE8 /* DiyCodeService.m in Sources */,
 				F16C4CDA1FE3CD510086117A /* MLTextAttachment.m in Sources */,
 				F16C4CDB1FE3CD510086117A /* NSString+MLExpression.m in Sources */,
 				F16C4CDC1FE3CD510086117A /* MLExpressionManager.m in Sources */,
 				F16C4CDD1FE3CD510086117A /* MLLabel.m in Sources */,
 				F16C4CDE1FE3CD510086117A /* MLLabelLayoutManager.m in Sources */,
-				F1F460E32046559300431FDE /* DiyCodeService.m in Sources */,
 				F16C4CDF1FE3CD510086117A /* XYString.m in Sources */,
 				F16C4CD21FE3CC550086117A /* SDPhotoBrowser.m in Sources */,
 				F16C4CD31FE3CC550086117A /* SDWaitingView.m in Sources */,
@@ -1219,11 +1282,15 @@
 				F16C4CD11FE3CC3B0086117A /* MLLinkLabel.m in Sources */,
 				F16C4C801FE3CA050086117A /* SDBaseRefreshView.m in Sources */,
 				F16C4C9A1FE3CA3F0086117A /* SDTimeLineTableHeaderView.m in Sources */,
+				F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */,
 				F1560C001FE3BF230030B958 /* ThreeModel.m in Sources */,
 				F16C4CA31FE3CA770086117A /* DemoVC9.m in Sources */,
+				F129D46C2050D9D000925CE8 /* Target_DiyCodeService.m in Sources */,
 				F1560BF41FE3BF0C0030B958 /* ThreeFourthCell.m in Sources */,
 				F1560BF21FE3BF0C0030B958 /* ThreeSecondCell.m in Sources */,
+				F129D4712050DA2000925CE8 /* DiyCodeTopicsApiManager.m in Sources */,
 				F16C4CA01FE3CA3F0086117A /* SDWeiXinPhotoContainerView.m in Sources */,
+				F129D47A205143B300925CE8 /* DiyCodeSitesApiManager.m in Sources */,
 				F16C4C9E1FE3CA3F0086117A /* SDTimeLineRefreshHeader.m in Sources */,
 				F16C4C9F1FE3CA3F0086117A /* SDTimeLineRefreshFooter.m in Sources */,
 				F1560BE51FE3B3C00030B958 /* CYLTabBarControllerConfig.m in Sources */,
@@ -1234,8 +1301,8 @@
 				F16C4C7C1FE3C9E00086117A /* SDBaseTableViewController.m in Sources */,
 				F1560BE01FE3B2FC0030B958 /* DiscoveryViewController.m in Sources */,
 				F182B5A9204E85DA0016DEB2 /* DiyCodeOauthService.m in Sources */,
-				F1F460E0204556C800431FDE /* DiyCodeTopicsApiManager.m in Sources */,
 				F16C4C9D1FE3CA3F0086117A /* SDTimeLineCellOperationMenu.m in Sources */,
+				F129D46D2050D9D000925CE8 /* Target_CTAppContext.m in Sources */,
 				F16C4C841FE3CA220086117A /* SDTimeLineCellModel.m in Sources */,
 				F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */,
 				F1560BFD1FE3BF230030B958 /* Imgextra.m in Sources */,
@@ -1246,7 +1313,6 @@
 				F16C4C9C1FE3CA3F0086117A /* SDTimeLineCellCommentView.m in Sources */,
 				F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */,
 				F182B59C204D24120016DEB2 /* DiyCodeNewsViewController.m in Sources */,
-				F182B57D2049336A0016DEB2 /* Target_DiyCodeService.m in Sources */,
 				F1560BFF1FE3BF230030B958 /* Editor.m in Sources */,
 				F16C4C7D1FE3C9E00086117A /* SDBaseNavigationController.m in Sources */,
 				F16C4C9B1FE3CA3F0086117A /* SDTimeLineCell.m in Sources */,

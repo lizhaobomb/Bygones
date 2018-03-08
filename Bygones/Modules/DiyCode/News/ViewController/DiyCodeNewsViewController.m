@@ -27,7 +27,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.table fill];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,6 +34,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [self.table fill];
+}
+
+#pragma mark - CTAPIManagerCallBackDelegate
 - (void)managerCallAPIDidFailed:(CTAPIBaseManager * _Nonnull)manager {
     
 }
@@ -45,10 +50,7 @@
         [self.table reloadData];
     }}
 
-- (NSDictionary * _Nullable)paramsForApi:(CTAPIBaseManager * _Nonnull)manager {
-    return @{};
-}
-
+#pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.news.count;
 }

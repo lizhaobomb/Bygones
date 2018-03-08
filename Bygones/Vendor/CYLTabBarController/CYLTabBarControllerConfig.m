@@ -11,7 +11,6 @@
 #import "DiscoveryViewController.h"
 #import "MessageViewController.h"
 #import "MineViewController.h"
-#import "DiyCodeNewsViewController.h"
 #import "DiyCodeHomeViewController.h"
 static CGFloat const CYLTabBarControllerHeight = 40.f;
 
@@ -98,7 +97,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
     CYLBaseNavigationController *officialNav = [[CYLBaseNavigationController alloc] initWithRootViewController:officialVC];
     MineViewController *mineVC = [[MineViewController alloc] init];
     CYLBaseNavigationController *mineNav = [[CYLBaseNavigationController alloc] initWithRootViewController:mineVC];
-    NSArray *viewControllers = @[homeNav, officialNav, diyCodeHomeNav, mineNav];
+    NSArray *viewControllers = @[homeNav,diyCodeHomeNav, officialNav, mineNav];
     return viewControllers;
 }
 
@@ -106,7 +105,7 @@ static CGFloat const CYLTabBarControllerHeight = 40.f;
 #warning CUSTOMIZE YOUR TABBAR APPEARANCE
     // Customize UITabBar height
     // 自定义 TabBar 高度
-    tabBarController.tabBarHeight = CYL_IS_IPHONE_X ? 65 : 40;
+    tabBarController.tabBarHeight = CYL_IS_IPHONE_X ? 65 : 49;
     
     // set the text color for unselected state
     // 普通状态下的文字属性

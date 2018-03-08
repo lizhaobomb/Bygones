@@ -87,6 +87,7 @@
 #pragma mark -interceptors
 
 - (BOOL)beforePerformSuccessWithResponse:(CTURLResponse *)response {
+    self.isFirstPage = NO;
     if (response.content.count == 0) {
         self.isLastPage = YES;
     } else {
