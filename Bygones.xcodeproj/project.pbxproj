@@ -19,6 +19,7 @@
 		F129D4712050DA2000925CE8 /* DiyCodeTopicsApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */; };
 		F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */; };
 		F129D47A205143B300925CE8 /* DiyCodeSitesApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */; };
+		F129D47E205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */; };
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
@@ -151,6 +152,8 @@
 		F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesViewController.m; sourceTree = "<group>"; };
 		F129D478205143B300925CE8 /* DiyCodeSitesApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesApiManager.h; sourceTree = "<group>"; };
 		F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesApiManager.m; sourceTree = "<group>"; };
+		F129D47C205225E100925CE8 /* DiyCodeSitesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesCollectionViewCell.h; sourceTree = "<group>"; };
+		F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesCollectionViewCell.m; sourceTree = "<group>"; };
 		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 		F129D4722051437600925CE8 /* Sites */ = {
 			isa = PBXGroup;
 			children = (
+				F129D47B205225C000925CE8 /* View */,
 				F129D4732051437600925CE8 /* ApiManager */,
 				F129D4742051437600925CE8 /* ViewController */,
 			);
@@ -451,6 +455,15 @@
 				F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F129D47B205225C000925CE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F129D47C205225E100925CE8 /* DiyCodeSitesCollectionViewCell.h */,
+				F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F1560BBB1FE3AFFC0030B958 /* Modules */ = {
@@ -1271,6 +1284,7 @@
 				F129D46E2050D9D000925CE8 /* DiyCodeService.m in Sources */,
 				F16C4CDA1FE3CD510086117A /* MLTextAttachment.m in Sources */,
 				F16C4CDB1FE3CD510086117A /* NSString+MLExpression.m in Sources */,
+				F129D47E205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m in Sources */,
 				F16C4CDC1FE3CD510086117A /* MLExpressionManager.m in Sources */,
 				F16C4CDD1FE3CD510086117A /* MLLabel.m in Sources */,
 				F16C4CDE1FE3CD510086117A /* MLLabelLayoutManager.m in Sources */,

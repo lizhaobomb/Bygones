@@ -12,6 +12,7 @@
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "DiyCodeTopicsViewController.h"
 #import "DiyCodeNewsViewController.h"
+#import "DiyCodeSitesViewController.h"
 
 @interface DiyCodeHomeViewController () <   TYPagerControllerDelegate,
                                             TYPagerControllerDataSource,
@@ -82,6 +83,9 @@
     }
     if ([title isEqualToString:@"News"]) {
         return [[DiyCodeNewsViewController alloc] init];
+    }
+    if ([title isEqualToString:@"Sites"]) {
+        return [[DiyCodeSitesViewController alloc] init];
     }
     return [[UIViewController alloc] init];
 }
