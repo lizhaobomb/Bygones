@@ -20,6 +20,8 @@
 		F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */; };
 		F129D47A205143B300925CE8 /* DiyCodeSitesApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */; };
 		F129D47E205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */; };
+		F129D48120525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48020525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m */; };
+		F129D48420525FAF00925CE8 /* DiyCodeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */; };
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
@@ -154,6 +156,10 @@
 		F129D479205143B300925CE8 /* DiyCodeSitesApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesApiManager.m; sourceTree = "<group>"; };
 		F129D47C205225E100925CE8 /* DiyCodeSitesCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesCollectionViewCell.h; sourceTree = "<group>"; };
 		F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesCollectionViewCell.m; sourceTree = "<group>"; };
+		F129D47F20525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeSitesCollectionHeaderView.h; sourceTree = "<group>"; };
+		F129D48020525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeSitesCollectionHeaderView.m; sourceTree = "<group>"; };
+		F129D48220525FAF00925CE8 /* DiyCodeWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeWebViewController.h; sourceTree = "<group>"; };
+		F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeWebViewController.m; sourceTree = "<group>"; };
 		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -453,6 +459,8 @@
 			children = (
 				F129D4752051438D00925CE8 /* DiyCodeSitesViewController.h */,
 				F129D4762051438D00925CE8 /* DiyCodeSitesViewController.m */,
+				F129D48220525FAF00925CE8 /* DiyCodeWebViewController.h */,
+				F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -462,6 +470,8 @@
 			children = (
 				F129D47C205225E100925CE8 /* DiyCodeSitesCollectionViewCell.h */,
 				F129D47D205225E100925CE8 /* DiyCodeSitesCollectionViewCell.m */,
+				F129D47F20525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.h */,
+				F129D48020525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1294,6 +1304,8 @@
 				F16C4CD41FE3CC550086117A /* SDBrowserImageView.m in Sources */,
 				F16C4CD51FE3CC550086117A /* SDBrowserImageView.h in Sources */,
 				F16C4CD11FE3CC3B0086117A /* MLLinkLabel.m in Sources */,
+				F129D48120525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m in Sources */,
+				F129D48420525FAF00925CE8 /* DiyCodeWebViewController.m in Sources */,
 				F16C4C801FE3CA050086117A /* SDBaseRefreshView.m in Sources */,
 				F16C4C9A1FE3CA3F0086117A /* SDTimeLineTableHeaderView.m in Sources */,
 				F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */,

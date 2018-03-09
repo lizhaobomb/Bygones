@@ -8,9 +8,11 @@
 
 #import "DiyCodeSitesCollectionViewCell.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface DiyCodeSitesCollectionViewCell()
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *icon;
 @end
 
 @implementation DiyCodeSitesCollectionViewCell
@@ -36,16 +38,23 @@
 
 - (void)addSubViews {
     [self.contentView addSubview:self.titleLabel];
+    [self.contentView addSubview:self.icon];
 }
 
 - (void)setupLayout {
-    self.titleLabel.ct_width = SCREEN_WIDTH;
-    self.titleLabel.ct_height = 50;
+    
+    self.icon.ct_size = CGSizeMake(20, 20);
+    [self.icon centerYEqualToView:self.contentView];
+    
+    [self.titleLabel fromTheRight:5 ofView:self.icon];
+    [self.titleLabel centerYEqualToView:self.icon];
 }
 
 #pragma mark - getters & setters
 - (void)setDatas:(NSDictionary *)datas {
     self.titleLabel.text = datas[@"name"];
+    [self.titleLabel sizeToFit];
+    [self.icon sd_setImageWithURL:datas[@"avatar_url"]];
 }
 
 - (UILabel *)titleLabel {
@@ -54,6 +63,13 @@
         _titleLabel.font = [UIFont systemFontOfSize:12];
     }
     return _titleLabel;
+}
+
+- (UIImageView *)icon {
+    if (!_icon) {
+        _icon = [[UIImageView alloc] init];
+    }
+    return _icon;
 }
 
 @end

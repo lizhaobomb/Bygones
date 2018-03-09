@@ -10,9 +10,13 @@
 #import "DiyCodeSitesApiManager.h"
 #import "DiyCodeSitesCollectionViewCell.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
+#import "DiyCodeSitesCollectionHeaderView.h"
 #import "Chameleon.h"
-static NSString *CellIdentifier = @"SitesCell";
+#import "DiyCodeWebViewController.h"
+#import <SafariServices/SFSafariViewController.h>
 
+static NSString *CellIdentifier = @"SitesCell";
+static NSString *ReuseableViewIdentifer = @"ReuseableView";
 @interface DiyCodeSitesViewController () <CTAPIManagerCallBackDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) DiyCodeSitesApiManager *sitesApiManager;
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -65,13 +69,29 @@ static NSString *CellIdentifier = @"SitesCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DiyCodeSitesCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.datas = self.sites[indexPath.section][@"sites"][indexPath.row];
-    cell.backgroundColor = [UIColor randomFlatColor];
+//    cell.backgroundColor = [UIColor randomFlatColor];
     return cell;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    DiyCodeSitesCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ReuseableViewIdentifer forIndexPath:indexPath];
+    
+    headerView.title = self.sites[indexPath.section][@"name"];
+    return headerView;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    NSString *url = self.sites[indexPath.section][@"sites"][indexPath.row][@"url"];
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:url]];
+    [self presentViewController:safariVC animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(60, 60);
+    return CGSizeMake((SCREEN_WIDTH-30)/2, 30);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
@@ -83,7 +103,7 @@ static NSString *CellIdentifier = @"SitesCell";
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
-    return 15;
+    return 5;
 }
 
 #pragma mark - CTAPIManagerCallBackDelegate
@@ -111,6 +131,8 @@ static NSString *CellIdentifier = @"SitesCell";
     if (!_collectionView) {
         _collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
         _collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _collectionViewLayout.headerReferenceSize = CGSizeMake(CGRectGetWidth(self.view.frame), 30);
+
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_collectionViewLayout];
         _collectionView.delegate = self;
@@ -118,6 +140,7 @@ static NSString *CellIdentifier = @"SitesCell";
         _collectionView.backgroundColor = [UIColor whiteColor];
         _collectionView.collectionViewLayout = self.collectionViewLayout;
         [_collectionView registerClass:[DiyCodeSitesCollectionViewCell class] forCellWithReuseIdentifier:CellIdentifier];
+        [_collectionView registerClass:[DiyCodeSitesCollectionHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ReuseableViewIdentifer];
     }
     return _collectionView;
 }
