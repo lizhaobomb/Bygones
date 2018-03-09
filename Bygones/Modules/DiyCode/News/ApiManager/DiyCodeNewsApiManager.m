@@ -9,7 +9,7 @@
 #import "DiyCodeNewsApiManager.h"
 #import "DiyCodeService.h"
 
-@interface DiyCodeNewsApiManager()<CTAPIManagerValidator>
+@interface DiyCodeNewsApiManager()<CTAPIManagerValidator,CTAPIManagerInterceptor>
 
 @property (nonatomic, assign, readwrite) BOOL isFirstPage;
 @property (nonatomic, assign, readwrite) BOOL isLastPage;
@@ -31,6 +31,7 @@
         _pageNumber = 0;
         self.cachePolicy = CTAPIManagerCachePolicyNoCache;
         self.validator = self;
+        self.interceptor = self;
     }
     return self;
 }
@@ -94,13 +95,19 @@
     return result;
 }
 
-#pragma mark - getters & setters
-- (NSUInteger)currentPageNumber {
-    return self.pageNumber;
+#pragma mark - CTAPIManagerInterceptor
+- (BOOL)beforePerformSuccessWithResponse:(CTURLResponse *)response {
+    _isFirstPage = NO;
+    if (response.content.count == 0) {
+        _isLastPage = YES;
+    } else {
+        _isLastPage = NO;
+        _pageNumber++;
+    }
+    return YES;
 }
 
-
-
+#pragma mark - CTAPIManagerValidator
 - (CTAPIManagerErrorType)manager:(CTAPIBaseManager * _Nonnull)manager isCorrectWithCallBackData:(NSDictionary * _Nullable)data {
     return CTAPIManagerErrorTypeNoError;
 }
@@ -109,6 +116,8 @@
     return CTAPIManagerErrorTypeNoError;
 }
 
-
-
+#pragma mark - getters & setters
+- (NSUInteger)currentPageNumber {
+    return self.pageNumber;
+}
 @end

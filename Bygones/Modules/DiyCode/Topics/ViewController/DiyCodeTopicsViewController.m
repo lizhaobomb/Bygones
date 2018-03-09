@@ -12,7 +12,7 @@
 #import "MJRefresh.h"
 @interface DiyCodeTopicsViewController ()<CTAPIManagerCallBackDelegate,UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) DiyCodeTopicsApiManager *topicsApiManager;
-@property (nonatomic, strong) NSArray *topics;
+@property (nonatomic, strong) NSMutableArray *topics;
 @property (nonatomic, strong) UITableView *topicsTable;
 @end
 
@@ -36,6 +36,7 @@
 
 #pragma mark - methods
 - (void)loadData {
+    [self.topics removeAllObjects];
     [self.topicsApiManager loadData];
 }
 
@@ -75,7 +76,7 @@
 #pragma mark - CTAPIManagerCallBackDelegate
 - (void)managerCallAPIDidSuccess:(CTAPIBaseManager *)manager {
     if (manager == self.topicsApiManager) {
-        self.topics = (NSArray *)manager.response.content;
+        [self.topics addObjectsFromArray:(NSArray *)manager.response.content];
         [self.topicsTable reloadData];
         [self endLoading];
     }
@@ -109,6 +110,13 @@
         ((MJRefreshAutoNormalFooter*)_topicsTable.mj_footer).automaticallyRefresh = NO;
     }
     return _topicsTable;
+}
+
+- (NSMutableArray *)topics {
+    if (!_topics) {
+        _topics = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _topics;
 }
 
 @end

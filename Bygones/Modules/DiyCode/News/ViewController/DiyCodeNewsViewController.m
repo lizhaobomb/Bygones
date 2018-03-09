@@ -9,11 +9,12 @@
 #import "DiyCodeNewsViewController.h"
 #import "DiyCodeNewsApiManager.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
+#import "MJRefresh.h"
 
 @interface DiyCodeNewsViewController ()<CTAPIManagerCallBackDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) DiyCodeNewsApiManager *newsApiManager;
-@property (nonatomic, strong) NSArray *news;
+@property (nonatomic, strong) NSMutableArray *news;
 @property (nonatomic, strong) UITableView *table;
 @end
 
@@ -22,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.table];
-    [self.newsApiManager loadData];
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -39,14 +40,30 @@
     [self.table fill];
 }
 
+#pragma mark - methods
+- (void)loadData {
+    [self.news removeAllObjects];
+    [self.newsApiManager loadData];
+}
+
+- (void)loadNext {
+    [self.newsApiManager loadNextPage];
+}
+
+- (void)endRefresh {
+    [self.table.mj_header endRefreshing];
+    [self.table.mj_footer endRefreshing];
+}
+
 #pragma mark - CTAPIManagerCallBackDelegate
 - (void)managerCallAPIDidFailed:(CTAPIBaseManager * _Nonnull)manager {
-    
+    [self endRefresh];
 }
 
 - (void)managerCallAPIDidSuccess:(CTAPIBaseManager * _Nonnull)manager {
+    [self endRefresh];
     if (manager == self.newsApiManager) {
-        self.news = (NSArray *)manager.response.content;
+        [self.news addObjectsFromArray:(NSArray *)manager.response.content];
         [self.table reloadData];
     }}
 
@@ -80,8 +97,21 @@
         _table = [[UITableView alloc] init];
         _table.delegate = self;
         _table.dataSource = self;
+        _table.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            [self loadData];
+        }];
+        _table.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            [self loadNext];
+        }];
     }
     return _table;
+}
+
+- (NSMutableArray *)news {
+    if (!_news) {
+        _news = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _news;
 }
 
 
