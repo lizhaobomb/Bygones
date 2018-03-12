@@ -10,6 +10,8 @@
 #import "DiyCodeTopicsApiManager.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "MJRefresh.h"
+#import "DiyCodeTopicsCell.h"
+
 @interface DiyCodeTopicsViewController ()<CTAPIManagerCallBackDelegate,UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) DiyCodeTopicsApiManager *topicsApiManager;
 @property (nonatomic, strong) NSMutableArray *topics;
@@ -64,13 +66,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"TopicsCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DiyCodeTopicsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[DiyCodeTopicsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     NSDictionary *topic = self.topics[indexPath.row];
-    cell.textLabel.text = topic[@"title"];
+    cell.datas = topic;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return [DiyCodeTopicsCell cellHeightForDatas:self.topics[indexPath.row]];
 }
 
 #pragma mark - CTAPIManagerCallBackDelegate
@@ -100,6 +107,7 @@
         _topicsTable = [[UITableView alloc] init];
         _topicsTable.delegate = self;
         _topicsTable.dataSource = self;
+        _topicsTable.separatorStyle = UITableViewCellSeparatorStyleNone;
         _topicsTable.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self loadData];
         }];

@@ -10,4 +10,7 @@
 
 @interface DiyCodeTopicsCell : UITableViewCell
 
+@property (nonatomic, strong) NSDictionary *datas;
+
++ (CGFloat)cellHeightForDatas:(NSDictionary *)datas;
 @end

@@ -13,6 +13,7 @@
 @interface TopicsCellTopView()
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
 @end
 
 @implementation TopicsCellTopView
@@ -32,6 +33,7 @@
 - (void)addSubViews {
     [self addSubview:self.avatarView];
     [self addSubview:self.titleLabel];
+    [self addSubview:self.timeLabel];
 }
 
 - (void)setupLayout {
@@ -40,16 +42,30 @@
     self.avatarView.ct_left = 5;
     
     [self.titleLabel fromTheRight:5 ofView:self.avatarView];
+    [self.titleLabel topEqualToView:self.avatarView];
     [self.titleLabel heightEqualToView:self.avatarView];
-    [self.titleLabel rightEqualToView:self];
+    
+    [self.timeLabel rightEqualToView:self];
+    [self.timeLabel topEqualToView:self.titleLabel];
+    [self.timeLabel heightEqualToView:self.titleLabel];
+}
+
+- (NSString *)formatTime:(NSString *)time {
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZ";
+    NSDate *dateFormated = [df dateFromString:time];
+    df.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    return [df stringFromDate:dateFormated];
 }
 
 #pragma mark - getters & setters
 - (void)setDatas:(NSDictionary *)datas {
     _datas = datas;
-    [self.avatarView sd_setImageWithURL:datas[@"avatar_url"]];
-    self.titleLabel.text = datas[@"title"];
+    [self.avatarView sd_setImageWithURL:datas[@"user"][@"avatar_url"]];
+    self.titleLabel.text = datas[@"user"][@"login"];
     [self.titleLabel sizeToFit];
+    self.timeLabel.text = [self formatTime:datas[@"updated_at"]];
+    [self.timeLabel sizeToFit];
 }
 
 - (UIImageView *)avatarView {
@@ -65,5 +81,13 @@
         _titleLabel.font = [UIFont systemFontOfSize:10];
     }
     return _titleLabel;
+}
+
+- (UILabel *)timeLabel {
+    if (!_timeLabel) {
+        _timeLabel = [[UILabel alloc] init];
+        _timeLabel.font = [UIFont systemFontOfSize:10];
+    }
+    return _timeLabel;
 }
 @end

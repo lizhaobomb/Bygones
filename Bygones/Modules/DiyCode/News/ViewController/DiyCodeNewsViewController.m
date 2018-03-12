@@ -10,6 +10,7 @@
 #import "DiyCodeNewsApiManager.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "MJRefresh.h"
+#import "DiyCodeTopicsCell.h"
 
 @interface DiyCodeNewsViewController ()<CTAPIManagerCallBackDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -74,13 +75,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"NewsCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DiyCodeTopicsCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[DiyCodeTopicsCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     NSDictionary *news = self.news[indexPath.row];
-    cell.textLabel.text = news[@"title"];
+    cell.datas = news;
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [DiyCodeTopicsCell cellHeightForDatas:self.news[indexPath.row]];
 }
 
 #pragma mark - getters & setters
@@ -97,6 +102,7 @@
         _table = [[UITableView alloc] init];
         _table.delegate = self;
         _table.dataSource = self;
+        _table.separatorStyle = UITableViewCellSeparatorStyleNone;
         _table.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             [self loadData];
         }];
