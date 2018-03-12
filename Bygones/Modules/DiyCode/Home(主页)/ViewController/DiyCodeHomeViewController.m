@@ -13,7 +13,7 @@
 #import "DiyCodeTopicsViewController.h"
 #import "DiyCodeNewsViewController.h"
 #import "DiyCodeSitesViewController.h"
-
+#import <ChameleonFramework/Chameleon.h>
 @interface DiyCodeHomeViewController () <   TYPagerControllerDelegate,
                                             TYPagerControllerDataSource,
                                             TYTabPagerBarDelegate,
@@ -139,7 +139,7 @@
         _tabPagerBar = [[TYTabPagerBar alloc] init];
         _tabPagerBar.delegate = self;
         _tabPagerBar.dataSource = self;
-        _tabPagerBar.backgroundColor = [UIColor whiteColor];
+        _tabPagerBar.backgroundColor = [UIColor flatSkyBlueColor];
         _tabPagerBar.layout.barStyle = TYPagerBarStyleProgressElasticView;
         [_tabPagerBar registerClass:[TYTabPagerBarCell class] forCellWithReuseIdentifier:[TYTabPagerBarCell cellIdentifier]];
     }

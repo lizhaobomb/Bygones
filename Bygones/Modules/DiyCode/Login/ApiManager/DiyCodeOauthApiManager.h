@@ -6,7 +6,7 @@
 //  Copyright © 2018年 lizhao. All rights reserved.
 //
 
-#import "CTAPIBaseManager.h"
+#import <CTNetworking/CTNetworking.h>
 
 @interface DiyCodeOauthApiManager : CTAPIBaseManager
 

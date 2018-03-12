@@ -11,6 +11,7 @@
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "MJRefresh.h"
 #import "DiyCodeTopicsCell.h"
+#import "DiyCodeTopicDetailViewController.h"
 
 @interface DiyCodeTopicsViewController ()<CTAPIManagerCallBackDelegate,UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) DiyCodeTopicsApiManager *topicsApiManager;
@@ -78,6 +79,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     return [DiyCodeTopicsCell cellHeightForDatas:self.topics[indexPath.row]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *topic = self.topics[indexPath.row];
+
+    DiyCodeTopicDetailViewController *detailVC = [[DiyCodeTopicDetailViewController alloc] init];
+    detailVC.topicId = topic[@"id"];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 #pragma mark - CTAPIManagerCallBackDelegate

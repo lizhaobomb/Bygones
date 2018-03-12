@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80CD40381767EA4E736B9460 /* libPods-Bygones.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B070B71CB08020A8B2D0063C /* libPods-Bygones.a */; };
+		3568B02B230E2E3648D66E47 /* Pods_Bygones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */; };
 		F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733B71FE2BD97007E263E /* AppDelegate.m */; };
 		F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12733BF1FE2BD97007E263E /* Assets.xcassets */; };
 		F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */; };
@@ -24,6 +24,8 @@
 		F129D48420525FAF00925CE8 /* DiyCodeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */; };
 		F129D4882052782700925CE8 /* DiyCodeTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4872052782700925CE8 /* DiyCodeTopicsCell.m */; };
 		F129D48B2052788000925CE8 /* TopicsCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48A2052788000925CE8 /* TopicsCellTopView.m */; };
+		F129D48E205666AB00925CE8 /* DiyCodeTopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48D205666AB00925CE8 /* DiyCodeTopicDetailViewController.m */; };
+		F129D491205666D200925CE8 /* DiyCodeTopicDetialApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */; };
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
@@ -133,7 +135,7 @@
 
 /* Begin PBXFileReference section */
 		29546701DCA9FADFE3B709B7 /* Pods-Bygones.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.release.xcconfig"; sourceTree = "<group>"; };
-		B070B71CB08020A8B2D0063C /* libPods-Bygones.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bygones.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bygones.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3447230DDC12C36E9E0968 /* Pods-Bygones.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.debug.xcconfig"; sourceTree = "<group>"; };
 		F12733B31FE2BD97007E263E /* Bygones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bygones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12733B61FE2BD97007E263E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -166,6 +168,10 @@
 		F129D4872052782700925CE8 /* DiyCodeTopicsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsCell.m; sourceTree = "<group>"; };
 		F129D4892052788000925CE8 /* TopicsCellTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicsCellTopView.h; sourceTree = "<group>"; };
 		F129D48A2052788000925CE8 /* TopicsCellTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicsCellTopView.m; sourceTree = "<group>"; };
+		F129D48C205666AB00925CE8 /* DiyCodeTopicDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicDetailViewController.h; sourceTree = "<group>"; };
+		F129D48D205666AB00925CE8 /* DiyCodeTopicDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicDetailViewController.m; sourceTree = "<group>"; };
+		F129D48F205666D200925CE8 /* DiyCodeTopicDetialApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicDetialApiManager.h; sourceTree = "<group>"; };
+		F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicDetialApiManager.m; sourceTree = "<group>"; };
 		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -337,7 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80CD40381767EA4E736B9460 /* libPods-Bygones.a in Frameworks */,
+				3568B02B230E2E3648D66E47 /* Pods_Bygones.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +353,7 @@
 		BD23818B8E33C093B0B36F3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B070B71CB08020A8B2D0063C /* libPods-Bygones.a */,
+				47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -408,6 +414,8 @@
 			children = (
 				F129D4702050DA2000925CE8 /* DiyCodeTopicsApiManager.h */,
 				F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */,
+				F129D48F205666D200925CE8 /* DiyCodeTopicDetialApiManager.h */,
+				F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */,
 			);
 			path = ApiManager;
 			sourceTree = "<group>";
@@ -417,6 +425,8 @@
 			children = (
 				F129D45D2050D99E00925CE8 /* DiyCodeTopicsViewController.h */,
 				F129D45E2050D99E00925CE8 /* DiyCodeTopicsViewController.m */,
+				F129D48C205666AB00925CE8 /* DiyCodeTopicDetailViewController.h */,
+				F129D48D205666AB00925CE8 /* DiyCodeTopicDetailViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1248,9 +1258,38 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bygones/Pods-Bygones-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework",
+				"${BUILT_PRODUCTS_DIR}/CTNetworking/CTNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CTPersistance/CTPersistance.framework",
+				"${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyFrame/HandyFrame.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework",
+				"${BUILT_PRODUCTS_DIR}/TYPagerController/TYPagerController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTMediator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CTPersistance.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CYLTabBarController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyFrame.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDAutoLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SQLCipher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TYPagerController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1301,6 +1340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F16C4CD61FE3CD510086117A /* TTTAttributedLabel.m in Sources */,
+				F129D491205666D200925CE8 /* DiyCodeTopicDetialApiManager.m in Sources */,
 				F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */,
 				F129D48B2052788000925CE8 /* TopicsCellTopView.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
@@ -1353,6 +1393,7 @@
 				F1560BFD1FE3BF230030B958 /* Imgextra.m in Sources */,
 				F1560BFE1FE3BF230030B958 /* Ads.m in Sources */,
 				F129D4882052782700925CE8 /* DiyCodeTopicsCell.m in Sources */,
+				F129D48E205666AB00925CE8 /* DiyCodeTopicDetailViewController.m in Sources */,
 				F1560BF11FE3BF0C0030B958 /* ThreeBaseCell.m in Sources */,
 				F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */,
 				F182B5A5204E858A0016DEB2 /* DiyCodeOauthApiManager.m in Sources */,

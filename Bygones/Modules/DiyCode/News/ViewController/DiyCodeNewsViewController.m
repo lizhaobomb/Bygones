@@ -11,6 +11,7 @@
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import "MJRefresh.h"
 #import "DiyCodeTopicsCell.h"
+#import <SafariServices/SafariServices.h>
 
 @interface DiyCodeNewsViewController ()<CTAPIManagerCallBackDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -86,6 +87,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [DiyCodeTopicsCell cellHeightForDatas:self.news[indexPath.row]];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *news = self.news[indexPath.row];
+    NSString *url = [news[@"address"] stringByRemovingPercentEncoding];
+    SFSafariViewController *safariVC = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:[url stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]]];
+    [self presentViewController:safariVC animated:YES completion:nil];
 }
 
 #pragma mark - getters & setters

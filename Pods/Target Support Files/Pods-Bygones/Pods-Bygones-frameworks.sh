@@ -132,6 +132,39 @@ strip_invalid_archs() {
   STRIP_BINARY_RETVAL=1
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTNetworking/CTNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTPersistance/CTPersistance.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/HandyFrame/HandyFrame.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TYPagerController/TYPagerController.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTMediator/CTMediator.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTNetworking/CTNetworking.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CTPersistance/CTPersistance.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CYLTabBarController/CYLTabBarController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/HandyFrame/HandyFrame.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDAutoLayout/SDAutoLayout.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SQLCipher/SQLCipher.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/TYPagerController/TYPagerController.framework"
+fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
 fi
