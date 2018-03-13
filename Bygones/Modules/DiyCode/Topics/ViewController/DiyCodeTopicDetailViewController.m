@@ -10,10 +10,11 @@
 #import "DiyCodeTopicDetialApiManager.h"
 #import <WebKit/WebKit.h>
 #import <HandyFrame/UIView+LayoutMethods.h>
-
+#import <EFMarkdown/EFMarkdown-Swift.h>
 @interface DiyCodeTopicDetailViewController ()<CTAPIManagerCallBackDelegate,CTAPIManagerParamSource,WKNavigationDelegate>
 @property (nonatomic, strong) DiyCodeTopicDetialApiManager *topicDetailApiManager;
 @property (nonatomic, strong) WKWebView *wkWebview;
+@property (nonatomic, strong) EFMarkdownView *makrdownView;
 @end
 
 @implementation DiyCodeTopicDetailViewController
@@ -69,6 +70,17 @@
 
  }
 
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (navigationAction.targetFrame == nil) {
+        [webView loadRequest:navigationAction.request];
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
 #pragma mark - getters
 - (DiyCodeTopicDetialApiManager *)topicDetailApiManager {
     if (!_topicDetailApiManager) {
@@ -86,5 +98,12 @@
     }
     return _wkWebview;
 }
+
+//- (EFMarkdownView *)makrdownView {
+//    if (!_makrdownView) {
+//        _makrdownView = [[EFMarkdownView alloc] init];
+//    }
+//    return _makrdownView;
+//}
 
 @end

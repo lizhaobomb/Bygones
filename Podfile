@@ -17,4 +17,5 @@ pod 'SDCycleScrollView', '~> 1.73'
 pod 'HandyFrame'
 pod 'ChameleonFramework'
 pod 'TYPagerController'
+#pod 'EFMarkdown'
 end
