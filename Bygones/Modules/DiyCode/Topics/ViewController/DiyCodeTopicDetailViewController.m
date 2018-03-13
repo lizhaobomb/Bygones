@@ -10,11 +10,9 @@
 #import "DiyCodeTopicDetialApiManager.h"
 #import <WebKit/WebKit.h>
 #import <HandyFrame/UIView+LayoutMethods.h>
-#import <EFMarkdown/EFMarkdown-Swift.h>
 @interface DiyCodeTopicDetailViewController ()<CTAPIManagerCallBackDelegate,CTAPIManagerParamSource,WKNavigationDelegate>
 @property (nonatomic, strong) DiyCodeTopicDetialApiManager *topicDetailApiManager;
 @property (nonatomic, strong) WKWebView *wkWebview;
-@property (nonatomic, strong) EFMarkdownView *makrdownView;
 @end
 
 @implementation DiyCodeTopicDetailViewController
@@ -95,15 +93,20 @@
     if (!_wkWebview) {
         _wkWebview = [[WKWebView alloc] init];
         _wkWebview.navigationDelegate = self;
+        
+        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        
+        WKUserScript *wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+        WKUserContentController *wkUController = [[WKUserContentController alloc] init];
+        [wkUController addUserScript:wkUScript];
+        
+        WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
+        wkWebConfig.userContentController = wkUController;
+//        _wkWebview.configuration = wkWebConfig;
+        _wkWebview = [[WKWebView alloc] initWithFrame:CGRectZero configuration:wkWebConfig];
     }
     return _wkWebview;
 }
 
-//- (EFMarkdownView *)makrdownView {
-//    if (!_makrdownView) {
-//        _makrdownView = [[EFMarkdownView alloc] init];
-//    }
-//    return _makrdownView;
-//}
 
 @end
