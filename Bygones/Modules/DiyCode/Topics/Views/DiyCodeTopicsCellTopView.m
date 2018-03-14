@@ -6,17 +6,17 @@
 //  Copyright © 2018年 lizhao. All rights reserved.
 //
 
-#import "TopicsCellTopView.h"
+#import "DiyCodeTopicsCellTopView.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface TopicsCellTopView()
+@interface DiyCodeTopicsCellTopView()
 @property (nonatomic, strong) UIImageView *avatarView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
 @end
 
-@implementation TopicsCellTopView
+@implementation DiyCodeTopicsCellTopView
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self addSubViews];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopicsCellTopView : UIView
+@interface DiyCodeTopicsCellTopView : UIView
 @property(nonatomic, strong) NSDictionary *datas;
 @end

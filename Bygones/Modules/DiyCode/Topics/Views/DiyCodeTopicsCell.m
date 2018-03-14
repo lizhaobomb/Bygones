@@ -7,13 +7,13 @@
 //
 
 #import "DiyCodeTopicsCell.h"
-#import "TopicsCellTopView.h"
+#import "DiyCodeTopicsCellTopView.h"
 #import <HandyFrame/UIView+LayoutMethods.h>
 #import <ChameleonFramework/Chameleon.h>
 
 @interface DiyCodeTopicsCell()
 
-@property(nonatomic, strong) TopicsCellTopView *topView;
+@property(nonatomic, strong) DiyCodeTopicsCellTopView *topView;
 @property(nonatomic, strong) UILabel *contentLabel;
 @property(nonatomic, strong) UILabel *nodeLabel;
 @property(nonatomic, strong) UILabel *commentLabel;
@@ -80,9 +80,9 @@
 
 }
 
-- (TopicsCellTopView *)topView {
+- (DiyCodeTopicsCellTopView *)topView {
     if (!_topView) {
-        _topView = [[TopicsCellTopView alloc] init];
+        _topView = [[DiyCodeTopicsCellTopView alloc] init];
     }
     return _topView;
 }

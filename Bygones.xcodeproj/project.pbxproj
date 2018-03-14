@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3568B02B230E2E3648D66E47 /* Pods_Bygones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */; };
+		F11C5AB420590EFC0099A490 /* DiyCodeTopicTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */; };
+		F11C5AB7205922C00099A490 /* DiyCodeTopicReplyApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C5AB6205922C00099A490 /* DiyCodeTopicReplyApiManager.m */; };
 		F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733B71FE2BD97007E263E /* AppDelegate.m */; };
 		F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12733BF1FE2BD97007E263E /* Assets.xcassets */; };
 		F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */; };
@@ -23,9 +25,12 @@
 		F129D48120525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48020525B1200925CE8 /* DiyCodeSitesCollectionHeaderView.m */; };
 		F129D48420525FAF00925CE8 /* DiyCodeWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */; };
 		F129D4882052782700925CE8 /* DiyCodeTopicsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D4872052782700925CE8 /* DiyCodeTopicsCell.m */; };
-		F129D48B2052788000925CE8 /* TopicsCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48A2052788000925CE8 /* TopicsCellTopView.m */; };
+		F129D48B2052788000925CE8 /* DiyCodeTopicsCellTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48A2052788000925CE8 /* DiyCodeTopicsCellTopView.m */; };
 		F129D48E205666AB00925CE8 /* DiyCodeTopicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D48D205666AB00925CE8 /* DiyCodeTopicDetailViewController.m */; };
 		F129D491205666D200925CE8 /* DiyCodeTopicDetialApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */; };
+		F129D53C2058B24B00925CE8 /* markdown.css in Resources */ = {isa = PBXBuildFile; fileRef = F129D53A2058B24B00925CE8 /* markdown.css */; };
+		F129D53D2058B24B00925CE8 /* showdown.js in Resources */ = {isa = PBXBuildFile; fileRef = F129D53B2058B24B00925CE8 /* showdown.js */; };
+		F129D5402058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F129D53F2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m */; };
 		F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD61FE3B2BA0030B958 /* HomeViewController.m */; };
 		F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BD91FE3B2D70030B958 /* MineViewController.m */; };
 		F1560BDD1FE3B2E70030B958 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1560BDC1FE3B2E70030B958 /* MessageViewController.m */; };
@@ -137,6 +142,10 @@
 		29546701DCA9FADFE3B709B7 /* Pods-Bygones.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.release.xcconfig"; sourceTree = "<group>"; };
 		47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bygones.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3447230DDC12C36E9E0968 /* Pods-Bygones.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bygones.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bygones/Pods-Bygones.debug.xcconfig"; sourceTree = "<group>"; };
+		F11C5AB220590EFC0099A490 /* DiyCodeTopicTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicTitleCell.h; sourceTree = "<group>"; };
+		F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicTitleCell.m; sourceTree = "<group>"; };
+		F11C5AB5205922C00099A490 /* DiyCodeTopicReplyApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicReplyApiManager.h; sourceTree = "<group>"; };
+		F11C5AB6205922C00099A490 /* DiyCodeTopicReplyApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicReplyApiManager.m; sourceTree = "<group>"; };
 		F12733B31FE2BD97007E263E /* Bygones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bygones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12733B61FE2BD97007E263E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F12733B71FE2BD97007E263E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -166,12 +175,16 @@
 		F129D48320525FAF00925CE8 /* DiyCodeWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeWebViewController.m; sourceTree = "<group>"; };
 		F129D4862052782700925CE8 /* DiyCodeTopicsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsCell.h; sourceTree = "<group>"; };
 		F129D4872052782700925CE8 /* DiyCodeTopicsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsCell.m; sourceTree = "<group>"; };
-		F129D4892052788000925CE8 /* TopicsCellTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopicsCellTopView.h; sourceTree = "<group>"; };
-		F129D48A2052788000925CE8 /* TopicsCellTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopicsCellTopView.m; sourceTree = "<group>"; };
+		F129D4892052788000925CE8 /* DiyCodeTopicsCellTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicsCellTopView.h; sourceTree = "<group>"; };
+		F129D48A2052788000925CE8 /* DiyCodeTopicsCellTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicsCellTopView.m; sourceTree = "<group>"; };
 		F129D48C205666AB00925CE8 /* DiyCodeTopicDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicDetailViewController.h; sourceTree = "<group>"; };
 		F129D48D205666AB00925CE8 /* DiyCodeTopicDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicDetailViewController.m; sourceTree = "<group>"; };
 		F129D48F205666D200925CE8 /* DiyCodeTopicDetialApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicDetialApiManager.h; sourceTree = "<group>"; };
 		F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicDetialApiManager.m; sourceTree = "<group>"; };
+		F129D53A2058B24B00925CE8 /* markdown.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = markdown.css; sourceTree = "<group>"; };
+		F129D53B2058B24B00925CE8 /* showdown.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = showdown.js; sourceTree = "<group>"; };
+		F129D53E2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicDetailWebCell.h; sourceTree = "<group>"; };
+		F129D53F2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicDetailWebCell.m; sourceTree = "<group>"; };
 		F1560BD51FE3B2BA0030B958 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		F1560BD61FE3B2BA0030B958 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		F1560BD81FE3B2D70030B958 /* MineViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
@@ -416,6 +429,8 @@
 				F129D46F2050DA2000925CE8 /* DiyCodeTopicsApiManager.m */,
 				F129D48F205666D200925CE8 /* DiyCodeTopicDetialApiManager.h */,
 				F129D490205666D200925CE8 /* DiyCodeTopicDetialApiManager.m */,
+				F11C5AB5205922C00099A490 /* DiyCodeTopicReplyApiManager.h */,
+				F11C5AB6205922C00099A490 /* DiyCodeTopicReplyApiManager.m */,
 			);
 			path = ApiManager;
 			sourceTree = "<group>";
@@ -498,10 +513,31 @@
 			children = (
 				F129D4862052782700925CE8 /* DiyCodeTopicsCell.h */,
 				F129D4872052782700925CE8 /* DiyCodeTopicsCell.m */,
-				F129D4892052788000925CE8 /* TopicsCellTopView.h */,
-				F129D48A2052788000925CE8 /* TopicsCellTopView.m */,
+				F129D4892052788000925CE8 /* DiyCodeTopicsCellTopView.h */,
+				F129D48A2052788000925CE8 /* DiyCodeTopicsCellTopView.m */,
+				F129D53E2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.h */,
+				F129D53F2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m */,
+				F11C5AB220590EFC0099A490 /* DiyCodeTopicTitleCell.h */,
+				F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F129D5382058B23300925CE8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F129D5392058B23300925CE8 /* js */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		F129D5392058B23300925CE8 /* js */ = {
+			isa = PBXGroup;
+			children = (
+				F129D53A2058B24B00925CE8 /* markdown.css */,
+				F129D53B2058B24B00925CE8 /* showdown.js */,
+			);
+			path = js;
 			sourceTree = "<group>";
 		};
 		F1560BBB1FE3AFFC0030B958 /* Modules */ = {
@@ -1008,6 +1044,7 @@
 		F182B593204CE9F00016DEB2 /* DiyCode */ = {
 			isa = PBXGroup;
 			children = (
+				F129D5382058B23300925CE8 /* Resource */,
 				F129D4722051437600925CE8 /* Sites */,
 				F129D4602050D9D000925CE8 /* Service */,
 				F129D45A2050D97700925CE8 /* Topics */,
@@ -1203,6 +1240,7 @@
 				F16C4D441FE3D4DF0086117A /* Camera@2x.png in Resources */,
 				F16C4D011FE3CFFC0086117A /* 11.jpg in Resources */,
 				F16C4D411FE3D4DA0086117A /* LikeCmtBg@3x.png in Resources */,
+				F129D53D2058B24B00925CE8 /* showdown.js in Resources */,
 				F16C4D401FE3D4DA0086117A /* LikeCmtBg@2x.png in Resources */,
 				F16C4D461FE3D4E80086117A /* AlbumOperateMoreViewBkg@2x.png in Resources */,
 				F16C4D101FE3CFFC0086117A /* 0.jpg in Resources */,
@@ -1221,6 +1259,7 @@
 				F16C4D431FE3D4DA0086117A /* Like@3x.png in Resources */,
 				F16C4D251FE3D0940086117A /* pic0.jpg in Resources */,
 				F16C4D001FE3CFFC0086117A /* 13.jpg in Resources */,
+				F129D53C2058B24B00925CE8 /* markdown.css in Resources */,
 				F16C4D161FE3D0440086117A /* icon1.jpg in Resources */,
 				F16C4D2B1FE3D0940086117A /* pic2.jpg in Resources */,
 				F16C4D281FE3D0940086117A /* pic3.jpg in Resources */,
@@ -1342,13 +1381,14 @@
 				F16C4CD61FE3CD510086117A /* TTTAttributedLabel.m in Sources */,
 				F129D491205666D200925CE8 /* DiyCodeTopicDetialApiManager.m in Sources */,
 				F182B5DA204FE9560016DEB2 /* DiyCodeHomeViewController.m in Sources */,
-				F129D48B2052788000925CE8 /* TopicsCellTopView.m in Sources */,
+				F129D48B2052788000925CE8 /* DiyCodeTopicsCellTopView.m in Sources */,
 				F16C4CD71FE3CD510086117A /* NSString+MLLabel.m in Sources */,
 				F182B5AC204E903D0016DEB2 /* Target_DiyCodeOauthService.m in Sources */,
 				F16C4CD81FE3CD510086117A /* NSAttributedString+MLLabel.m in Sources */,
 				F16C4CD91FE3CD510086117A /* NSAttributedString+MLExpression.m in Sources */,
 				F182B598204CEA4A0016DEB2 /* DiyCodeNewsApiManager.m in Sources */,
 				F129D45F2050D99E00925CE8 /* DiyCodeTopicsViewController.m in Sources */,
+				F129D5402058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m in Sources */,
 				F182B5A2204E3A3F0016DEB2 /* DiyCodeLoginViewController.m in Sources */,
 				F129D46E2050D9D000925CE8 /* DiyCodeService.m in Sources */,
 				F16C4CDA1FE3CD510086117A /* MLTextAttachment.m in Sources */,
@@ -1370,12 +1410,14 @@
 				F129D4772051438D00925CE8 /* DiyCodeSitesViewController.m in Sources */,
 				F1560C001FE3BF230030B958 /* ThreeModel.m in Sources */,
 				F16C4CA31FE3CA770086117A /* DemoVC9.m in Sources */,
+				F11C5AB7205922C00099A490 /* DiyCodeTopicReplyApiManager.m in Sources */,
 				F129D46C2050D9D000925CE8 /* Target_DiyCodeService.m in Sources */,
 				F1560BF41FE3BF0C0030B958 /* ThreeFourthCell.m in Sources */,
 				F1560BF21FE3BF0C0030B958 /* ThreeSecondCell.m in Sources */,
 				F129D4712050DA2000925CE8 /* DiyCodeTopicsApiManager.m in Sources */,
 				F16C4CA01FE3CA3F0086117A /* SDWeiXinPhotoContainerView.m in Sources */,
 				F129D47A205143B300925CE8 /* DiyCodeSitesApiManager.m in Sources */,
+				F11C5AB420590EFC0099A490 /* DiyCodeTopicTitleCell.m in Sources */,
 				F16C4C9E1FE3CA3F0086117A /* SDTimeLineRefreshHeader.m in Sources */,
 				F16C4C9F1FE3CA3F0086117A /* SDTimeLineRefreshFooter.m in Sources */,
 				F1560BE51FE3B3C00030B958 /* CYLTabBarControllerConfig.m in Sources */,

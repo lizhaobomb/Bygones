@@ -92,8 +92,8 @@
         self.isLastPage = YES;
     } else {
         self.isLastPage = NO;
+        self.pageNumber++;
     }
-    self.pageNumber++;
     return [super beforePerformSuccessWithResponse:response];
 }
 
