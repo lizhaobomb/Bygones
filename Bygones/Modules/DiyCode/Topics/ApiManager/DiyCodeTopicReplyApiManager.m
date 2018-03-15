@@ -59,7 +59,7 @@
 #pragma mark - CTAPIManager
 - (NSString * _Nonnull)methodName {
     NSString *topicId = [self.paramSource paramsForApi:self][@"topicId"];
-    return [NSString stringWithFormat:@"/news/%@/replies.json",topicId];
+    return [NSString stringWithFormat:@"/topics/%@/replies.json",topicId];
 }
 
 - (CTAPIManagerRequestType)requestType {
@@ -68,6 +68,29 @@
 
 - (NSString * _Nonnull)serviceIdentifier {
     return ServiceIdentifierDiyCode;
+}
+
+- (NSDictionary *)reformParams:(NSDictionary *)params {
+    NSMutableDictionary *result = [params mutableCopy];
+    if (result == nil) {
+        result = [NSMutableDictionary dictionary];
+    }
+    if (result[@"limit"] == nil) {
+        result[@"limit"] = @(self.pageSize);
+    } else {
+        self.pageSize = [result[@"limit"] integerValue];
+    }
+    
+    if (result[@"offset"] == nil) {
+        if (!self.isFirstPage) {
+            result[@"offset"] = @(self.pageSize * self.pageNumber);
+        } else {
+            result[@"offset"] = @(0);
+        }
+    } else {
+        self.pageNumber = [result[@"limit"] unsignedIntegerValue] / self.pageSize;
+    }
+    return result;
 }
 
 #pragma mark - CTAPIManagerInterceptor
@@ -91,6 +114,11 @@
     return CTAPIManagerErrorTypeNoError;
 }
 
+
+#pragma mark - setters
+- (NSUInteger)currentPageNumber {
+    return self.currentPageNumber;
+}
 
 
 @end

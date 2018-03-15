@@ -10,6 +10,7 @@
 		3568B02B230E2E3648D66E47 /* Pods_Bygones.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47A809DC90DB6D4F0C31F53A /* Pods_Bygones.framework */; };
 		F11C5AB420590EFC0099A490 /* DiyCodeTopicTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */; };
 		F11C5AB7205922C00099A490 /* DiyCodeTopicReplyApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C5AB6205922C00099A490 /* DiyCodeTopicReplyApiManager.m */; };
+		F11C5ABA205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C5AB9205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.m */; };
 		F12733B81FE2BD97007E263E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F12733B71FE2BD97007E263E /* AppDelegate.m */; };
 		F12733C01FE2BD97007E263E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F12733BF1FE2BD97007E263E /* Assets.xcassets */; };
 		F12733C31FE2BD97007E263E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F12733C11FE2BD97007E263E /* LaunchScreen.storyboard */; };
@@ -146,6 +147,8 @@
 		F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicTitleCell.m; sourceTree = "<group>"; };
 		F11C5AB5205922C00099A490 /* DiyCodeTopicReplyApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicReplyApiManager.h; sourceTree = "<group>"; };
 		F11C5AB6205922C00099A490 /* DiyCodeTopicReplyApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicReplyApiManager.m; sourceTree = "<group>"; };
+		F11C5AB8205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DiyCodeTopicReplyCellTableViewCell.h; sourceTree = "<group>"; };
+		F11C5AB9205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiyCodeTopicReplyCellTableViewCell.m; sourceTree = "<group>"; };
 		F12733B31FE2BD97007E263E /* Bygones.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bygones.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F12733B61FE2BD97007E263E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F12733B71FE2BD97007E263E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -519,6 +522,8 @@
 				F129D53F2058CE3700925CE8 /* DiyCodeTopicDetailWebCell.m */,
 				F11C5AB220590EFC0099A490 /* DiyCodeTopicTitleCell.h */,
 				F11C5AB320590EFC0099A490 /* DiyCodeTopicTitleCell.m */,
+				F11C5AB8205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.h */,
+				F11C5AB9205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1440,6 +1445,7 @@
 				F1560BD71FE3B2BA0030B958 /* HomeViewController.m in Sources */,
 				F182B5A5204E858A0016DEB2 /* DiyCodeOauthApiManager.m in Sources */,
 				F16C4C9C1FE3CA3F0086117A /* SDTimeLineCellCommentView.m in Sources */,
+				F11C5ABA205A06EE0099A490 /* DiyCodeTopicReplyCellTableViewCell.m in Sources */,
 				F1560BDA1FE3B2D70030B958 /* MineViewController.m in Sources */,
 				F182B59C204D24120016DEB2 /* DiyCodeNewsViewController.m in Sources */,
 				F1560BFF1FE3BF230030B958 /* Editor.m in Sources */,

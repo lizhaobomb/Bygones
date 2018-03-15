@@ -13,24 +13,20 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "DiyCodeTopicDetailWebCell.h"
 #import "DiyCodeTopicTitleCell.h"
-
+#import "DiyCodeTopicReplyApiManager.h"
 
 @interface DiyCodeTopicDetailViewController ()<CTAPIManagerCallBackDelegate,CTAPIManagerParamSource,
 UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
 @property (nonatomic, strong) DiyCodeTopicDetialApiManager *topicDetailApiManager;
-//@property (nonatomic, strong) WKWebView *wkWebview;
 @property (nonatomic, strong) JSContext *jsContext;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) CGFloat webViewHeight;
 @property (nonatomic, strong) NSDictionary *responseContent;
-//@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) DiyCodeTopicReplyApiManager *replyApiManager;
+@property (nonatomic, strong) NSMutableArray *replys;
 @end
 
 @implementation DiyCodeTopicDetailViewController
-
-- (void)dealloc {
-//    [self.wkWebview.scrollView removeObserver:self forKeyPath:@"contentSize"];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,6 +69,7 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
 
 - (void)loadData {
     [self.topicDetailApiManager loadData];
+    [self.replyApiManager loadData];
 }
 
 - (void)addSubviews {
@@ -118,7 +115,7 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
             return 1;
             break;
         case 2:
-            return 3;
+            return self.replys.count;
             break;
         default:
             return 0;
@@ -136,6 +133,14 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
             return cell;
             break;
             
+        }
+        case 2: {
+            
+            DiyCodeTopicTitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
+            cell.datas = self.replys[indexPath.row];
+            return cell;
+            break;
+        
         }
             
         default:{
@@ -171,6 +176,12 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
 //        self.html = [self htmlString:dict[@"body"]];
         [self.tableView reloadData];
     }
+    
+    if (manager == self.replyApiManager) {
+        [self.replys addObjectsFromArray:(NSArray *)manager.response.content];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
 }
 
 - (void)managerCallAPIDidFailed:(CTAPIBaseManager *)manager {
@@ -216,6 +227,14 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
     return _topicDetailApiManager;
 }
 
+- (DiyCodeTopicReplyApiManager *)replyApiManager {
+    if (!_replyApiManager) {
+        _replyApiManager = [[DiyCodeTopicReplyApiManager alloc] init];
+        _replyApiManager.delegate = self;
+        _replyApiManager.paramSource = self;
+    }
+    return _replyApiManager;
+}
 
 - (UITableView *)tableView {
     if (!_tableView) {
@@ -233,6 +252,13 @@ UITableViewDelegate, UITableViewDataSource,WKNavigationDelegate, WKUIDelegate>
         _jsContext = [[JSContext alloc] init];
     }
     return _jsContext;
+}
+
+- (NSMutableArray *)replys {
+    if (!_replys) {
+        _replys = [NSMutableArray arrayWithCapacity:4];
+    }
+    return _replys;
 }
 
 
